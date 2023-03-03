@@ -1,5 +1,8 @@
+package Clases;
 
-public enum Alimentacion {
+import java.io.Serializable;
+
+public enum Alimentacion implements Serializable {
 	PERROPEQUENO("Cuido para perros cachorros"), 
 	PERROMEDIANO("Cuido para perros jovenes"), 
 	PERROGRANDE("Cuido para perros adultos"), 

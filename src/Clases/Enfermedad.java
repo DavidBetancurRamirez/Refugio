@@ -1,5 +1,8 @@
+package Clases;
 
-public enum Enfermedad {
+import java.io.Serializable;
+
+public enum Enfermedad implements Serializable {
 	//Enfermedades de perros principalmente
 	PARASITOS("Parasitos intestinales"),
 	OTITIS("Otitis"),
