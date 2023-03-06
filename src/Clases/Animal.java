@@ -20,7 +20,6 @@ public abstract class Animal implements Serializable {
     protected double cantidadComida;
     protected boolean adoptado;
     protected Alimentacion alimentacion;
-    protected Enfermedad[] enfermedades;
     protected Chequeo[] chequeos;
 
     
@@ -31,8 +30,8 @@ public abstract class Animal implements Serializable {
         this.edad = edad;
         this.cantidadComida = cantidadComida;
         this.alimentacion = alimentacion;
-        this.enfermedades = enfermedades;
         this.chequeos = new Chequeo[0];
+        addChequeo(enfermedades);
     }
 
     public void addChequeo(Enfermedad[] enfermedades){
@@ -118,17 +117,10 @@ public abstract class Animal implements Serializable {
         this.chequeos = chequeos;
     }
 
-	public Enfermedad[] getEnfermedades() {
-		return enfermedades;
-	}
-	public void setEnfermedades(Enfermedad[] enfermedades) {
-		this.enfermedades = enfermedades;
-	}
-
 	@Override
 	public String toString() {
 		return "Animal [id=" + id + ", raza=" + raza + ", recomendaciones=" + recomendaciones + ", edad=" + edad
 				+ ", cantidadComida=" + cantidadComida + ", adoptado=" + adoptado + ", alimentacion=" + alimentacion
-				+ ", enfermedades=" + Arrays.toString(enfermedades) + ", chequeos=" + Arrays.toString(chequeos) + "]";
+				+ ", chequeos=" + Arrays.toString(chequeos) + "]";
 	}
 }

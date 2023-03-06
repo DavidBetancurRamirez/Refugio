@@ -24,6 +24,7 @@ public class Adopcion implements Serializable {
 		this.cliente=cliente;
 		this.animal=animal;
 		this.fechaAdopcion = new Date();
+		this.vigencia = true;
 	}
 	
 	public void escribirObjeto(String address) throws IOException {

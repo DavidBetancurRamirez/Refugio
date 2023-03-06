@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 6L;
@@ -14,18 +15,6 @@ public class Cliente implements Serializable {
 	private String cc, name, telefono;
 	private boolean aptoAdoptar;
 	private boolean[] respuestasAdopcion;
-	
-	private static final String[] preguntasAdopcion = {
-			"¿Ha adoptado algun animal en el pasado?",
-			"¿Tiene otros animales en la casa?",
-			"¿Estan vacunados los otros animales en su casa? (En caso de no tener mas animales, responda que si)", 
-			"¿Es su casa segura para un perro o un gato?",
-			"¿Conoce los gastos y cuidados que implicará incorporar un animal y está dispuesto a asumirlos?",
-			"¿Posee algún espacio al aire libre?", 
-			"¿Tiene certeza que permiten tener animales en su residencia?",
-			"¿Todas las personas que viven en su casa están de acuerdo con esta adopción?",
-			"¿Está al tanto de que el animal necesitará un período aproximado de 15 a 30 días para adaptarse a su nueva familia, horarios, lugares, etc.?" 
-	};
 	private static final int[] puntosFormulario = {5,3,4,5,3,2,2,2,2};
 
 	public Cliente(String cc, String name, String telefono, boolean[] respuestasAdopcion) {
@@ -101,5 +90,11 @@ public class Cliente implements Serializable {
 	}
 	public void setAptoAdoptar(boolean aptoAdoptar) {
 		this.aptoAdoptar = aptoAdoptar;
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [cc=" + cc + ", name=" + name + ", telefono=" + telefono + ", aptoAdoptar=" + aptoAdoptar
+				+ ", respuestasAdopcion=" + Arrays.toString(respuestasAdopcion) + "]";
 	}
 }
