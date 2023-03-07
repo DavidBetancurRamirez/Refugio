@@ -14,6 +14,7 @@ public class Chequeo implements Serializable {
 
     public Chequeo(Enfermedad[] enfermedades) {
 		this.id = "chequeo_"+ ++cantidad;
+		this.fecha = new Date();
         this.enfermedades = enfermedades;
     }
 
