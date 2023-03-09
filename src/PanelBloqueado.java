@@ -89,9 +89,9 @@ public class PanelBloqueado extends JPanel {
 		add(fecha);
 		
 		error = new JLabel("");
-		error.setFont(new Font("Verdana", Font.BOLD, 14));
+		error.setFont(new Font("Verdana", Font.BOLD, 12));
 		error.setForeground(new Color(255, 0, 0));
-		error.setBounds(91, 276, 244, 18);
+		error.setBounds(91, 350, 203, 18);
 		add(error);
 
 	}
