@@ -126,7 +126,7 @@ public class Main extends JFrame {
 		panelHeader.setLayout(null);
 		
 		JPanel panelClose = new JPanel();
-		panelClose.setBackground(new Color(61, 170, 190));
+		panelClose.setBackground(new Color(136, 218, 232));
 		panelClose.setBounds(0, 0, 42, 42);
 		panelHeader.add(panelClose);
 		panelClose.setLayout(null);
@@ -151,7 +151,7 @@ public class Main extends JFrame {
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				panelClose.setBackground(new Color(61, 170, 190));
+				panelClose.setBackground(new Color(136, 218, 232));
 				lblNewLabel.setForeground(new Color(0, 0, 0));
 			}
 		});
@@ -182,6 +182,8 @@ public class Main extends JFrame {
 			//Aca hay una alerta
 			JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
 		}
+		
+		//Null = blanco , true = rojo, false = verde
 		
 		
 		JSeparator separatorA1;

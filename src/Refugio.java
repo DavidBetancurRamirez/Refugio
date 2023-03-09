@@ -80,23 +80,34 @@ public class Refugio {
 	
 	public int[] buscarAnimalTipo(String tipo) {
 		int[] animalesPorTipo = new int[0];
-		if(tipo.equalsIgnoreCase("Perro")) {
-			for(int i=0; i<animales.length; i++) {
-				if(animales[i] instanceof Perro) {
-					animalesPorTipo = Arrays.copyOf(animalesPorTipo, animalesPorTipo.length+1);
-					animalesPorTipo[animalesPorTipo.length-1] = i;
-		
-				}
-			}
-		} else if(tipo.equalsIgnoreCase("Gato")) {
-			for(int i=0; i<animales.length; i++) {
-				if(animales[i] instanceof Gato) {
-					animalesPorTipo = Arrays.copyOf(animalesPorTipo, animalesPorTipo.length+1);
-					animalesPorTipo[animalesPorTipo.length-1] = i;
-				}
+		for(int i=0; i<animales.length; i++) {
+			if(String.valueOf(animales[i].getClass().getSimpleName()).equals(tipo)) {
+				animalesPorTipo = Arrays.copyOf(animalesPorTipo, animalesPorTipo.length+1);
+				animalesPorTipo[animalesPorTipo.length-1] = i;
 			}
 		}
 		return animalesPorTipo;
+//		if(tipo.equalsIgnoreCase("Perro")) {
+//			for(int i=0; i<animales.length; i++) {
+////				if(animales[i] instanceof Perro) {
+////					animalesPorTipo = Arrays.copyOf(animalesPorTipo, animalesPorTipo.length+1);
+////					animalesPorTipo[animalesPorTipo.length-1] = i;
+////		
+////				}
+//				if(String.valueOf(animales[i].getClass().getSimpleName()).equals(tipo)) {
+//					animalesPorTipo = Arrays.copyOf(animalesPorTipo, animalesPorTipo.length+1);
+//					animalesPorTipo[animalesPorTipo.length-1] = i;
+//				}
+//			}
+//		} else if(tipo.equalsIgnoreCase("Gato")) {
+//			for(int i=0; i<animales.length; i++) {
+//				if(animales[i] instanceof Gato) {
+//					animalesPorTipo = Arrays.copyOf(animalesPorTipo, animalesPorTipo.length+1);
+//					animalesPorTipo[animalesPorTipo.length-1] = i;
+//				}
+//			}
+//		}
+//		return animalesPorTipo;
 	}
 	
 	public int[] buscarAnimalRaza(String raza) {

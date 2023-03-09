@@ -25,7 +25,7 @@ public class PanelBloqueado extends JPanel {
 	JLabel error;
 	
 	public PanelBloqueado() {
-		setBackground(new Color(255, 255, 255));
+		setBackground(new Color(242, 242, 242));
 		setBounds(0, 0, 1200, 720);
 		setLayout(null);
 		

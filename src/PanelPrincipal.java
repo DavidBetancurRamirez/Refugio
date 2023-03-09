@@ -41,7 +41,7 @@ public class PanelPrincipal extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelPrincipal() {
-		setBackground(new Color(255, 255, 255));
+		setBackground(new Color(242, 242, 242));
 		setBounds(0, 0, 1200, 720);
 		setLayout(null);
 		
