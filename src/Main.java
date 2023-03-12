@@ -104,6 +104,8 @@ public class Main extends JFrame {
 			}
 		});
 		
+		
+		
 		JPanel panelHeader = new JPanel();
 		panelHeader.setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
 		panelHeader.addMouseMotionListener(new MouseMotionAdapter() {
@@ -165,6 +167,47 @@ public class Main extends JFrame {
 			}
 		});
 		
+		panel3.lblBtnVolver.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panelPrincipal(panel3);
+				panel3.limpiarCasillas();
+			}
+		});
+		
+		panel3.lblBtnGuardar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					if(panel3.modificando) {
+						refugio.modAnimal(panel3.id, panel3.getRaza(), panel3.getRecomendaciones(), panel3.getEdad(), panel3.getCantComida(), panel3.alim, panel3.getEnfermedades());
+					}
+					else {						
+						refugio.addAnimal(panel3.getRaza(), panel3.getRecomendaciones(), panel3.getEdad(), panel3.getCantComida(), panel3.getEspecial(), panel3.getEnfermedades(), true);
+					}
+					refugio.subirAnimales(ruta);
+					panelPrincipal(panel3);
+					panel3.limpiarCasillas();
+				}
+				catch(NumberFormatException error) {
+					JOptionPane.showMessageDialog(panel3, "Formato invalido en Cantidad, \n Use . para decimales");
+				}
+				catch(ENoEncontrado error) {
+					JOptionPane.showMessageDialog(panel3, error.getMessage());
+				}
+				catch(EParamNoValidos error) {
+					JOptionPane.showMessageDialog(panel3, error.getMessage());
+				}
+				catch(ESinEspacio error) {
+					JOptionPane.showMessageDialog(panel3, error.getMessage());
+				}
+				catch(IOException error) {
+					//Aca hay una alerta
+					JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
+				}
+			}
+		});
+		
 		contentPane.add(panel1);
 	}
 	
@@ -186,6 +229,141 @@ public class Main extends JFrame {
 		//Null = blanco , true = rojo, false = verde
 		
 		
+//		JSeparator separatorA1;
+//		Label labelId1;
+//		Label labelTipo1;
+//		Label labelRaza1;
+//		Label labelEdad1;
+//		Label labelInfo1;
+//		JLabel labelCirculo;
+//		
+//		Animal[] siAdoptados = new Animal[0];
+//		Animal[] noAdoptados = new Animal[0];
+//		for(Animal i : refugio.getAnimales()) {
+//			if(!i.isAdoptado()) {
+//				noAdoptados = Arrays.copyOf(noAdoptados, noAdoptados.length+1);
+//				noAdoptados[noAdoptados.length-1] = i;
+//				continue;
+//			}
+//			siAdoptados = Arrays.copyOf(siAdoptados, siAdoptados.length+1);
+//			siAdoptados[siAdoptados.length-1] = i;
+//			
+//		}
+//		Animal[] animalitos = new Animal[refugio.getAnimales().length];
+//		System.arraycopy(noAdoptados, 0, animalitos, 0, noAdoptados.length);
+//		System.arraycopy(siAdoptados, 0, animalitos, noAdoptados.length, siAdoptados.length);
+//		
+//		
+//		Cliente[] siAptos = new Cliente[0];
+//		Cliente[] noAptos = new Cliente[0];
+//		for(Cliente i : refugio.getClientes()) {
+//			if(i.isAptoAdoptar()) {
+//				siAptos = Arrays.copyOf(siAptos, siAptos.length+1);
+//				siAptos[siAptos.length-1] = i;
+//				continue;
+//			}
+//			noAptos = Arrays.copyOf(noAptos, noAptos.length+1);
+//			noAptos[noAptos.length-1] = i;
+//		}
+//		Cliente[] clientitos = new Cliente[refugio.getClientes().length];
+//		System.arraycopy(siAptos, 0, clientitos, 0, siAptos.length);
+//		System.arraycopy(noAptos, 0, clientitos, siAptos.length, noAptos.length);
+//		
+//		int coordenada = 31;
+//		for(Animal i : animalitos) {
+//			separatorA1 = new JSeparator();
+//			separatorA1.setForeground(new Color(255, 255, 255));
+//			separatorA1.setBounds(0, coordenada+30, 525, 1);
+//			panel2.panelAnimales.add(separatorA1);
+//			
+//			labelId1 = new Label(i.getId());
+//			labelId1.setForeground(new Color(255, 255, 255));
+//			labelId1.setFont(new Font("Verdana", Font.PLAIN, 12));
+//			labelId1.setBounds(41, coordenada, 99, 30);
+//			panel2.panelAnimales.add(labelId1);
+//			
+//			String tipoAnimal = i instanceof Perro ? "Perro" : "Gato";
+//			labelTipo1 = new Label(tipoAnimal);
+//			labelTipo1.setForeground(new Color(255, 255, 255));
+//			labelTipo1.setFont(new Font("Verdana", Font.PLAIN, 12));
+//			labelTipo1.setBounds(141, coordenada, 79, 30);
+//			panel2.panelAnimales.add(labelTipo1);
+//			
+//			labelRaza1 = new Label(i.getRaza());
+//			labelRaza1.setForeground(Color.WHITE);
+//			labelRaza1.setFont(new Font("Verdana", Font.PLAIN, 12));
+//			labelRaza1.setBounds(221, coordenada, 189, 30);
+//			panel2.panelAnimales.add(labelRaza1);
+//			
+//			labelEdad1 = new Label(String.valueOf(i.getEdad()));
+//			labelEdad1.setAlignment(Label.CENTER);
+//			labelEdad1.setForeground(Color.WHITE);
+//			labelEdad1.setFont(new Font("Verdana", Font.PLAIN, 12));
+//			labelEdad1.setBounds(411, coordenada, 63, 30);
+//			panel2.panelAnimales.add(labelEdad1);
+//			
+//			labelInfo1 = new Label("+");
+//			labelInfo1.setForeground(Color.WHITE);
+//			labelInfo1.setFont(new Font("Verdana", Font.PLAIN, 18));
+//			labelInfo1.setAlignment(Label.CENTER);
+//			labelInfo1.setBounds(475, coordenada, 50, 30);
+//			panel2.panelAnimales.add(labelInfo1);
+//			
+//			String circuloRoute = i.isAdoptado() ? "/Imagenes/circuloRojo.png": "/Imagenes/circuloVerde.png";
+//			labelCirculo = new JLabel("");
+//			labelCirculo.setIcon(new ImageIcon(PanelPrincipal.class.getResource(circuloRoute)));
+//			labelCirculo.setHorizontalAlignment(SwingConstants.CENTER);
+//			labelCirculo.setBounds(0, coordenada, 39, 30);
+//			panel2.panelAnimales.add(labelCirculo);
+//			
+//			coordenada += 30;
+//		}
+//		
+//		coordenada = 31;
+//		for(Cliente i : clientitos) {
+//			separatorA1 = new JSeparator();
+//			separatorA1.setForeground(new Color(255, 255, 255));
+//			separatorA1.setBounds(0, coordenada+30, 525, 1);
+//			panel2.panelClientes.add(separatorA1);
+//			
+//			labelId1 = new Label(i.getCc());
+//			labelId1.setForeground(new Color(255, 255, 255));
+//			labelId1.setFont(new Font("Verdana", Font.PLAIN, 12));
+//			labelId1.setBounds(41, coordenada, 119, 30);
+//			panel2.panelClientes.add(labelId1);
+//			
+//			labelRaza1 = new Label(i.getName());
+//			labelRaza1.setForeground(Color.WHITE);
+//			labelRaza1.setFont(new Font("Verdana", Font.PLAIN, 12));
+//			labelRaza1.setBounds(161, coordenada, 313, 30);
+//			panel2.panelClientes.add(labelRaza1);
+//			
+//			labelInfo1 = new Label("+");
+//			labelInfo1.setForeground(Color.WHITE);
+//			labelInfo1.setFont(new Font("Verdana", Font.PLAIN, 18));
+//			labelInfo1.setAlignment(Label.CENTER);
+//			labelInfo1.setBounds(475, coordenada, 50, 30);
+//			panel2.panelClientes.add(labelInfo1);
+//			
+//			String circuloRoute = i.isAptoAdoptar() ? "/Imagenes/circuloVerde.png" : "/Imagenes/circuloRojo.png";
+//			labelCirculo = new JLabel("");
+//			labelCirculo.setIcon(new ImageIcon(PanelPrincipal.class.getResource(circuloRoute)));
+//			labelCirculo.setHorizontalAlignment(SwingConstants.CENTER);
+//			labelCirculo.setBounds(0, coordenada, 39, 30);
+//			panel2.panelClientes.add(labelCirculo);
+//			
+//			coordenada += 30;
+//		}
+		Animal[] animalitos = new Animal[refugio.getAnimales().length];
+		pintarAnimalesClientes(animalitos);
+		
+		
+		panel2.setVisible(true);
+		panelAnterior.setVisible(false);
+		contentPane.add(panel2);
+	}
+	
+	public void pintarAnimalesClientes(Animal[] animalitos) {
 		JSeparator separatorA1;
 		Label labelId1;
 		Label labelTipo1;
@@ -206,7 +384,7 @@ public class Main extends JFrame {
 			siAdoptados[siAdoptados.length-1] = i;
 			
 		}
-		Animal[] animalitos = new Animal[refugio.getAnimales().length];
+//		Animal[] animalitos = new Animal[refugio.getAnimales().length];
 		System.arraycopy(noAdoptados, 0, animalitos, 0, noAdoptados.length);
 		System.arraycopy(siAdoptados, 0, animalitos, noAdoptados.length, siAdoptados.length);
 		
@@ -264,7 +442,18 @@ public class Main extends JFrame {
 			labelInfo1.setFont(new Font("Verdana", Font.PLAIN, 18));
 			labelInfo1.setAlignment(Label.CENTER);
 			labelInfo1.setBounds(475, coordenada, 50, 30);
+			labelInfo1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			panel2.panelAnimales.add(labelInfo1);
+			
+			labelInfo1.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					panel3.setVisible(true);
+					panel3.modifyAnimal(i);
+					panel2.setVisible(false);
+					contentPane.add(panel3);
+				}
+			});
 			
 			String circuloRoute = i.isAdoptado() ? "/Imagenes/circuloRojo.png": "/Imagenes/circuloVerde.png";
 			labelCirculo = new JLabel("");
@@ -311,10 +500,5 @@ public class Main extends JFrame {
 			
 			coordenada += 30;
 		}
-		
-		
-		panel2.setVisible(true);
-		panelAnterior.setVisible(false);
-		contentPane.add(panel2);
 	}
 }
