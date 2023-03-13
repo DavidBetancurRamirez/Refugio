@@ -29,5 +29,4 @@ public enum Enfermedad implements Serializable {
 	public String getTexto() {
 		return texto;
 	}
-
 }
