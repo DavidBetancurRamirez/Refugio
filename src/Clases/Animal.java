@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public abstract class Animal implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private static int cantidad = 0;
+	public static int cantidad = 0;
 	
 	protected String id;
     protected String raza;

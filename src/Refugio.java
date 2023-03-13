@@ -43,6 +43,7 @@ public class Refugio {
 		if (!clientes[ic].isAptoAdoptar() || animales[ia].isAdoptado()) throw new EAdopcion("No se pudo realizar la adopcion");
 
 		animales[ia].setAdoptado(true);
+		System.out.println(animales[ia].isAdoptado());
 		
 		adopciones = Arrays.copyOf(adopciones, adopciones.length+1);
 		adopciones[adopciones.length-1] = new Adopcion(clientes[ic], animales[ia]);
@@ -213,7 +214,7 @@ public class Refugio {
 		File f = new File(ruta+"\\Adopciones\\");
 		File[] listaF = f.listFiles(new Filtro(".ado"));
 		adopciones = new Adopcion[listaF.length];
-		
+		Adopcion.cantidad = listaF.length;
 		for (int i = 0; i < listaF.length; i++) {
 			FileInputStream in = new FileInputStream(listaF[i]);
 			ObjectInputStream o = new ObjectInputStream(in);
@@ -227,6 +228,7 @@ public class Refugio {
 		File f = new File(ruta+"\\Animales\\");
 		File[] listaF = f.listFiles(new Filtro(".ani"));
 		animales = new Animal[listaF.length];
+		Animal.cantidad = listaF.length;
 		
 		for (int i = 0; i < listaF.length; i++) {
 			FileInputStream in = new FileInputStream(listaF[i]);
@@ -254,6 +256,7 @@ public class Refugio {
 	public void eliminarAdopcion(String id) throws ENoEncontrado {
 		int i = buscarAdopcionId(id);
 		if (i==-1) throw new ENoEncontrado("No se encontro la adopcion con id "+id);;
+		
 		
 		System.arraycopy(adopciones, i+1, adopciones, i, adopciones.length-i-1);
 		adopciones = Arrays.copyOf(adopciones, adopciones.length-1);
@@ -340,13 +343,13 @@ public class Refugio {
 		a.setFechaAdopcion(fechaAdopcion);
 	}
 	
-	public void modCliente(String cc, String nombre, String telefono, boolean aptoAdoptar) throws ENoEncontrado, EParamNoValidos {
+	public void modCliente(Cliente c,String cc, String nombre, String telefono, boolean aptoAdoptar) throws ENoEncontrado, EParamNoValidos {
 		if (cc==null || nombre==null || telefono==null) throw new EParamNoValidos();
 		
 		int i = buscarClienteCc(cc);
 		if (i==-1) throw new ENoEncontrado("No se encontro el cliente con cc "+cc);
 		
-		Cliente c = clientes[i];
+//		Cliente c = clientes[i];
 		
 		c.setName(nombre);
 		c.setTelefono(telefono);

@@ -3,6 +3,7 @@ import java.awt.Color;
 import javax.swing.JPanel;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -14,6 +15,10 @@ import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import Clases.Animal;
+import Clases.Cliente;
+
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
@@ -30,12 +35,18 @@ import javax.swing.ScrollPaneConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
+import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class PanelPrincipal extends JPanel {
 	private JSeparator separator2;
 	JPanel panelAnimales;
 	JPanel panelClientes;
 	JLabel labelAddAnimal;
+	JLabel labelAddCliente;
+	JLabel lblBtnAdoptar;
+	private JTextField textFieldIdAnimal;
+	private JTextField textFieldIdCliente;
 
 	/**
 	 * Create the panel.
@@ -255,16 +266,185 @@ public class PanelPrincipal extends JPanel {
 		labelAddAnimal.setBounds(430, 120, 115, 25);
 		add(labelAddAnimal);
 		
-		JLabel labelAddCliente = new JLabel("");
+		labelAddCliente = new JLabel("");
+		labelAddCliente.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		labelAddCliente.setIcon(new ImageIcon(PanelPrincipal.class.getResource("/Imagenes/add.png")));
 		labelAddCliente.setHorizontalAlignment(SwingConstants.CENTER);
 		labelAddCliente.setForeground(Color.GREEN);
 		labelAddCliente.setBounds(1056, 120, 115, 25);
 		add(labelAddCliente);
+		
+		JLabel lblAdopciones = new JLabel("Adopciones");
+		lblAdopciones.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAdopciones.setFont(new Font("Verdana", Font.BOLD, 25));
+		lblAdopciones.setBounds(25, 520, 450, 40);
+		add(lblAdopciones);
+		
+		JPanel panelAdopcion = new JPanel();
+		panelAdopcion.setBackground(new Color(61, 170, 190));
+		panelAdopcion.setBounds(100, 580, 300, 110);
+		add(panelAdopcion);
+		panelAdopcion.setLayout(null);
+		
+		JLabel lblIdAnimal = new JLabel("IdAnimal");
+		lblIdAnimal.setForeground(new Color(255, 255, 255));
+		lblIdAnimal.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblIdAnimal.setBounds(30, 20, 77, 15);
+		panelAdopcion.add(lblIdAnimal);
+		
+		JLabel lblIdCliente = new JLabel("IdCliente");
+		lblIdCliente.setForeground(Color.WHITE);
+		lblIdCliente.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblIdCliente.setBounds(30, 50, 77, 15);
+		panelAdopcion.add(lblIdCliente);
+		
+		textFieldIdAnimal = new JTextField();
+		textFieldIdAnimal.setBounds(120, 20, 150, 20);
+		panelAdopcion.add(textFieldIdAnimal);
+		textFieldIdAnimal.setColumns(10);
+		
+		textFieldIdCliente = new JTextField();
+		textFieldIdCliente.setColumns(10);
+		textFieldIdCliente.setBounds(120, 50, 150, 20);
+		panelAdopcion.add(textFieldIdCliente);
+		
+		lblBtnAdoptar = new JLabel("");
+		lblBtnAdoptar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblBtnAdoptar.setIcon(new ImageIcon(PanelPrincipal.class.getResource("/Imagenes/adoptar.png")));
+		lblBtnAdoptar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBtnAdoptar.setBounds(93, 78, 115, 25);
+		panelAdopcion.add(lblBtnAdoptar);
 	
-		
-		
-		
 
+	}
+	public Animal getAnimal(Refugio r){
+		return r.getAnimales()[r.buscarAnimalId(textFieldIdAnimal.getText())];
+	}
+	public Cliente getCliente(Refugio r) {
+		return r.getClientes()[r.buscarClienteCc(textFieldIdCliente.getText())];
+	}
+	
+	public void limpiarAdopcion() {
+		textFieldIdAnimal.setText("");
+		textFieldIdCliente.setText("");
+	}
+	
+	public void generateTablaAnimal() {
+		JSeparator separatorV1 = new JSeparator();
+		separatorV1.setPreferredSize(new Dimension(1, 900));
+		separatorV1.setForeground(new Color(255, 255, 255));
+		separatorV1.setOrientation(SwingConstants.VERTICAL);
+		separatorV1.setBounds(40, 0, 1, 930);
+		panelAnimales.add(separatorV1);
+		
+		JSeparator separatorV2 = new JSeparator();
+		separatorV2.setOrientation(SwingConstants.VERTICAL);
+		separatorV2.setForeground(Color.WHITE);
+		separatorV2.setBounds(140, 0, 1, 930);
+		panelAnimales.add(separatorV2);
+		
+		JSeparator separatorV3 = new JSeparator();
+		separatorV3.setOrientation(SwingConstants.VERTICAL);
+		separatorV3.setForeground(Color.WHITE);
+		separatorV3.setBounds(220, 0, 1, 930);
+		panelAnimales.add(separatorV3);
+		
+		JSeparator separatorV4 = new JSeparator();
+		separatorV4.setOrientation(SwingConstants.VERTICAL);
+		separatorV4.setForeground(Color.WHITE);
+		separatorV4.setBounds(410, 0, 1, 930);
+		panelAnimales.add(separatorV4);
+		
+		JSeparator separatorV5 = new JSeparator();
+		separatorV5.setOrientation(SwingConstants.VERTICAL);
+		separatorV5.setForeground(Color.WHITE);
+		separatorV5.setBounds(474, 0, 1, 930);
+		panelAnimales.add(separatorV5);
+		
+		JSeparator separatorH1 = new JSeparator();
+		separatorH1.setForeground(new Color(255, 255, 255));
+		separatorH1.setBounds(0, 30, 525, 1);
+		panelAnimales.add(separatorH1);
+		
+		JLabel lblId = new JLabel("Id");
+		lblId.setFont(new Font("Verdana", Font.BOLD, 13));
+		lblId.setForeground(new Color(255, 255, 255));
+		lblId.setHorizontalAlignment(SwingConstants.CENTER);
+		lblId.setBounds(40, 0, 100, 30);
+		panelAnimales.add(lblId);
+		
+		JLabel lblTipo = new JLabel("Tipo");
+		lblTipo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTipo.setForeground(Color.WHITE);
+		lblTipo.setFont(new Font("Verdana", Font.BOLD, 13));
+		lblTipo.setBounds(140, 0, 80, 30);
+		panelAnimales.add(lblTipo);
+		
+		JLabel lbllRaza = new JLabel("Raza");
+		lbllRaza.setHorizontalAlignment(SwingConstants.CENTER);
+		lbllRaza.setForeground(Color.WHITE);
+		lbllRaza.setFont(new Font("Verdana", Font.BOLD, 13));
+		lbllRaza.setBounds(220, 0, 190, 30);
+		panelAnimales.add(lbllRaza);
+		
+		JLabel lblEdad = new JLabel("Edad");
+		lblEdad.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEdad.setForeground(Color.WHITE);
+		lblEdad.setFont(new Font("Verdana", Font.BOLD, 13));
+		lblEdad.setBounds(410, 0, 64, 30);
+		panelAnimales.add(lblEdad);
+		
+		JLabel lblInfo = new JLabel("Info");
+		lblInfo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInfo.setForeground(Color.WHITE);
+		lblInfo.setFont(new Font("Verdana", Font.BOLD, 13));
+		lblInfo.setBounds(474, 0, 51, 30);
+		panelAnimales.add(lblInfo);
+	}
+
+	public void generateTablaCliente() {
+		JSeparator separatorv1 = new JSeparator();
+		separatorv1.setForeground(new Color(255, 255, 255));
+		separatorv1.setOrientation(SwingConstants.VERTICAL);
+		separatorv1.setBounds(40, 0, 1, 930);
+		panelClientes.add(separatorv1);
+		
+		JSeparator separatorv2 = new JSeparator();
+		separatorv2.setOrientation(SwingConstants.VERTICAL);
+		separatorv2.setForeground(Color.WHITE);
+		separatorv2.setBounds(160, 0, 1, 930);
+		panelClientes.add(separatorv2);
+		
+		JSeparator separatorv3 = new JSeparator();
+		separatorv3.setOrientation(SwingConstants.VERTICAL);
+		separatorv3.setForeground(Color.WHITE);
+		separatorv3.setBounds(474, 0, 1, 930);
+		panelClientes.add(separatorv3);
+		
+		JSeparator separatorh1 = new JSeparator();
+		separatorh1.setForeground(Color.WHITE);
+		separatorh1.setBounds(0, 30, 525, 1);
+		panelClientes.add(separatorh1);
+		
+		JLabel lblCc = new JLabel("CC");
+		lblCc.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCc.setForeground(Color.WHITE);
+		lblCc.setFont(new Font("Verdana", Font.BOLD, 13));
+		lblCc.setBounds(40, 0, 120, 30);
+		panelClientes.add(lblCc);
+		
+		JLabel lblNombre = new JLabel("Nombre");
+		lblNombre.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNombre.setForeground(Color.WHITE);
+		lblNombre.setFont(new Font("Verdana", Font.BOLD, 13));
+		lblNombre.setBounds(160, 0, 314, 30);
+		panelClientes.add(lblNombre);
+		
+		JLabel labelInfoCliente = new JLabel("Info");
+		labelInfoCliente.setHorizontalAlignment(SwingConstants.CENTER);
+		labelInfoCliente.setForeground(Color.WHITE);
+		labelInfoCliente.setFont(new Font("Verdana", Font.BOLD, 13));
+		labelInfoCliente.setBounds(474, 0, 51, 30);
+		panelClientes.add(labelInfoCliente);
 	}
 }

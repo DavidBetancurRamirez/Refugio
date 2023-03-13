@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 public class Adopcion implements Serializable {
 	private static final long serialVersionUID = 5L;
-	private static int cantidad = 0;
+	 public static int cantidad = 0;
 	
 	private String id;
 	private Cliente cliente;
