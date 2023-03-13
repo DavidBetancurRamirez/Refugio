@@ -63,7 +63,7 @@ public class Main extends JFrame {
 	PanelPrincipal panel2 = new PanelPrincipal();
 	PanelAddAnimal panel3 = new PanelAddAnimal();
 	PanelAddCliente panel4 = new PanelAddCliente();
-	PanelAddAdopcion panel5 = new PanelAddAdopcion();
+//	PanelAddAdopcion panel5 = new PanelAddAdopcion();
 	PanelAddAdopcion2 panel6 = new PanelAddAdopcion2();
 	
 	Refugio refugio = new Refugio(30);
@@ -182,57 +182,77 @@ public class Main extends JFrame {
 		panel2.lblBtnAdoptar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				try {
-//					refugio.adoptarAnimal(panel2.getCliente(refugio).getCc(), panel2.getAnimal(refugio).getId());
-//					panel5.getInfo(panel2.getAnimal(refugio), panel2.getCliente(refugio), refugio);
-//					refugio.subirAdopciones(ruta);
-//					panel5.setVisible(true);
-//					panel2.setVisible(false);
-//					contentPane.add(panel5);
-//				}
-//				catch(EParamNoValidos error){
-//					JOptionPane.showMessageDialog(panel5, error.getMessage());
-//				}
-//				catch(ENoEncontrado error) {
-//					JOptionPane.showMessageDialog(panel5, error.getMessage());
-//				}
-//				catch(EAdopcion error){
-//					JOptionPane.showMessageDialog(panel5, error.getMessage());
-//				}
-//				catch(ArrayIndexOutOfBoundsException error) {
-//					JOptionPane.showMessageDialog(panel2, "Id animal y/o cliente no encontrados \n Vuelva a intentar");
-//				}
-//				catch(IOException error) {
-//					JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
-//				}
 				try {
 					refugio.adoptarAnimal(panel2.getCliente(refugio).getCc(), panel2.getAnimal(refugio).getId());
+					refugio.subirAnimales(ruta);
 					refugio.subirAdopciones(ruta);
 					panel6.setVisible(true);
 					panel6.getInfo(panel2.getCliente(refugio), panel2.getAnimal(refugio), refugio);
 					panel2.setVisible(false);
+					panel6.setAdding(true);
 					contentPane.add(panel6);
 				}
 				catch(EParamNoValidos error) {
-					JOptionPane.showMessageDialog(panel3, error.getMessage());
+					JOptionPane.showMessageDialog(panel2, error.getMessage());
 				}
 				catch(ENoEncontrado error) {
-					JOptionPane.showMessageDialog(panel3, error.getMessage());
+					JOptionPane.showMessageDialog(panel2, error.getMessage());
 				}
 				catch(EAdopcion error) {
-					JOptionPane.showMessageDialog(panel3, error.getMessage());
+					JOptionPane.showMessageDialog(panel2, error.getMessage());
+				}
+				catch(ArrayIndexOutOfBoundsException error) {
+					JOptionPane.showMessageDialog(panel2, "Datos incorrectos");
 				}
 				catch(IOException error) {
 					JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
-				}
+				} 
+				
 			}
 		});
 		
 		panel6.lblBtnVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				refugio.subirAdopciones(ruta);
-				panelPrincipal(panel6);
+				try	{
+					refugio.subirAdopciones(ruta);
+					panelPrincipal(panel6);		
+					panel6.setModificando(false);
+					panel6.setVigencia(false);
+					panel6.setAdding(false);
+				}
+				catch(IOException error) {
+					JOptionPane.showMessageDialog(panel6, "Datos incompletos al cargar la informacion, vuelva a intentar");
+				} 
+			}
+		});
+		
+		panel6.lblBtnCancelar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					if((panel6.getModificando() && panel6.getVigencia()) || panel6.wasAding()) {
+						refugio.reingresoAnimal(panel6.getIdAdopcion());
+					}
+					refugio.subirAdopciones(ruta);
+					refugio.subirAnimales(ruta);
+					panelPrincipal(panel6);
+					panel6.setModificando(false);
+					panel6.setVigencia(false);
+					panel6.setAdding(false);
+				} 
+				catch(EParamNoValidos error) {
+					JOptionPane.showMessageDialog(panel3, error.getMessage());
+				}
+				catch(ENoEncontrado error) {
+					JOptionPane.showMessageDialog(panel3, error.getMessage());
+				}
+				catch(ESinEspacio error) {
+					JOptionPane.showMessageDialog(panel3, error.getMessage());
+				}
+				catch(IOException error) {
+					JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
+				} 
 			}
 		});
 		
@@ -268,7 +288,7 @@ public class Main extends JFrame {
 						refugio.modAnimal(panel3.id, panel3.getRaza(), panel3.getRecomendaciones(), panel3.getEdad(), panel3.getCantComida(), panel3.alim, panel3.getEnfermedades());
 					}
 					else {						
-						refugio.addAnimal(panel3.getRaza(), panel3.getRecomendaciones(), panel3.getEdad(), panel3.getCantComida(), panel3.getEspecial(), panel3.getEnfermedades(), true);
+						refugio.addAnimal(panel3.getRaza(), panel3.getRecomendaciones(), panel3.getEdad(), panel3.getCantComida(), panel3.getEspecial(), panel3.getEnfermedades(), panel3.isPerro());
 					}
 					refugio.subirAnimales(ruta);
 					panelPrincipal(panel3);
@@ -320,40 +340,6 @@ public class Main extends JFrame {
 			}
 		});
 		
-		panel5.lblBtnVolver.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				try {
-					refugio.subirAdopciones(ruta);
-					panelPrincipal(panel5);
-					panel5.limpiarCasillas();					
-				}
-				catch(IOException error) {
-					JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
-				}
-			}
-		});
-		
-		panel5.lblBtnCancelar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				try	{
-					refugio.reingresoAnimal(panel5.getIdAdocpcion());
-					panelPrincipal(panel5);
-					panel5.limpiarCasillas();
-				}
-				catch(EParamNoValidos error) {
-					JOptionPane.showMessageDialog(panel3, error.getMessage());
-				}
-				catch(ENoEncontrado error) {
-					JOptionPane.showMessageDialog(panel3, error.getMessage());
-				}
-				catch(ESinEspacio error) {
-					JOptionPane.showMessageDialog(panel3, error.getMessage());
-				}
-			}
-		});
-		
 		contentPane.add(panel1);
 	}
 	
@@ -375,10 +361,7 @@ public class Main extends JFrame {
 		
 		//Null = blanco , true = rojo, false = verde
 		
-//		Animal[] animalitos = new Animal[refugio.getAnimales().length];
 		limpiarPanelPrincipal();
-		panel2.limpiarAdopcion();
-//		pintarAnimalesClientes(refugio.getAnimales());
 		pintarAnimalesClientes();
 		
 		panel2.setVisible(true);
@@ -410,7 +393,6 @@ public class Main extends JFrame {
 		Animal[] animalitos = new Animal[refugio.getAnimales().length];
 		System.arraycopy(noAdoptados, 0, animalitos, 0, noAdoptados.length);
 		System.arraycopy(siAdoptados, 0, animalitos, noAdoptados.length, siAdoptados.length);
-		animalitos = refugio.getAnimales();
 		
 		Cliente[] siAptos = new Cliente[0];
 		Cliente[] noAptos = new Cliente[0];
@@ -426,6 +408,22 @@ public class Main extends JFrame {
 		Cliente[] clientitos = new Cliente[refugio.getClientes().length];
 		System.arraycopy(siAptos, 0, clientitos, 0, siAptos.length);
 		System.arraycopy(noAptos, 0, clientitos, siAptos.length, noAptos.length);
+		
+		Adopcion[] adopVig = new Adopcion[0];
+		Adopcion[] adopNoVig = new Adopcion[0];
+		for(Adopcion i : refugio.getAdopciones()) {
+			if(i.isVigencia()) {
+				adopVig = Arrays.copyOf(adopVig, adopVig.length + 1);
+				adopVig[adopVig.length-1] = i;
+				continue;
+			}
+			adopNoVig = Arrays.copyOf(adopNoVig, adopNoVig.length+1);
+			adopNoVig[adopNoVig.length-1] = i;
+		}
+		Adopcion[] adopcionsitas = new Adopcion[refugio.getAdopciones().length];
+		System.arraycopy(adopVig, 0, adopcionsitas, 0, adopVig.length);
+		System.arraycopy(adopNoVig, 0, adopcionsitas, adopVig.length, adopNoVig.length);
+	
 		
 		int coordenada = 31;
 		for(Animal i : animalitos) {
@@ -479,6 +477,7 @@ public class Main extends JFrame {
 			});
 			
 			String circuloRoute = i.isAdoptado() ? "/Imagenes/circuloRojo.png": "/Imagenes/circuloVerde.png";
+			System.out.println(i.getId()+" : "+i.isAdoptado());
 			labelCirculo = new JLabel("");
 			labelCirculo.setIcon(new ImageIcon(PanelPrincipal.class.getResource(circuloRoute)));
 			labelCirculo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -534,6 +533,62 @@ public class Main extends JFrame {
 			
 			coordenada += 30;
 		}
+		
+		coordenada = 31;
+		for(Adopcion i : adopcionsitas) {
+			
+			separatorA1 = new JSeparator();
+			separatorA1.setForeground(new Color(255, 255, 255));
+			separatorA1.setBounds(0, coordenada+30, 675, 1);
+			panel2.panelInfoAdopcion.add(separatorA1);
+			
+			String circuloRoute = i.isVigencia() ? "/Imagenes/circuloVerde.png" : "/Imagenes/circuloRojo.png";
+			labelCirculo = new JLabel("");
+			labelCirculo.setIcon(new ImageIcon(PanelPrincipal.class.getResource(circuloRoute)));
+			labelCirculo.setHorizontalAlignment(SwingConstants.CENTER);
+			labelCirculo.setBounds(0, coordenada, 39, 30);
+			panel2.panelInfoAdopcion.add(labelCirculo);
+			
+			labelTipo1 = new Label(i.getId());
+			labelTipo1.setAlignment(Label.CENTER);
+			labelTipo1.setForeground(new Color(255, 255, 255));
+			labelTipo1.setFont(new Font("Verdana", Font.PLAIN, 12));
+			labelTipo1.setBounds(41, coordenada, 194, 30);
+			panel2.panelInfoAdopcion.add(labelTipo1);
+			
+			labelRaza1 = new Label(i.getAnimal().getId());
+			labelRaza1.setAlignment(Label.CENTER);
+			labelRaza1.setForeground(Color.WHITE);
+			labelRaza1.setFont(new Font("Verdana", Font.PLAIN, 12));
+			labelRaza1.setBounds(236, coordenada, 194, 30);
+			panel2.panelInfoAdopcion.add(labelRaza1);
+			
+			labelEdad1 = new Label(i.getCliente().getCc());
+			labelEdad1.setAlignment(Label.CENTER);
+			labelEdad1.setForeground(Color.WHITE);
+			labelEdad1.setFont(new Font("Verdana", Font.PLAIN, 12));
+			labelEdad1.setBounds(431, coordenada, 194, 30);
+			panel2.panelInfoAdopcion.add(labelEdad1);
+			
+			labelInfo1 = new Label("+");
+			labelInfo1.setForeground(Color.WHITE);
+			labelInfo1.setFont(new Font("Verdana", Font.PLAIN, 18));
+			labelInfo1.setAlignment(Label.CENTER);
+			labelInfo1.setBounds(626, coordenada, 49, 30);
+			labelInfo1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			panel2.panelInfoAdopcion.add(labelInfo1);
+			
+			labelInfo1.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					panel6.setVisible(true);
+					panel6.modifyAdopcion(i);
+					panel2.setVisible(false);
+					contentPane.add(panel6);
+				}
+			});
+			coordenada += 30;
+		}
 	}
 	
 	public void limpiarPanelPrincipal() {
@@ -541,7 +596,10 @@ public class Main extends JFrame {
 		//Limpiar todo y desp afregar los componenetes staticos de las tablas
 		panel2.panelAnimales.removeAll();
 		panel2.panelClientes.removeAll();
+		panel2.panelInfoAdopcion.removeAll();
 		panel2.generateTablaAnimal();
 		panel2.generateTablaCliente();
+		panel2.generateTablaAdopciones();
+		panel2.limpiarAdopcion();
 	}
 }

@@ -43,7 +43,7 @@ public class Refugio {
 		if (!clientes[ic].isAptoAdoptar() || animales[ia].isAdoptado()) throw new EAdopcion("No se pudo realizar la adopcion");
 
 		animales[ia].setAdoptado(true);
-		System.out.println(animales[ia].isAdoptado());
+//		System.out.println(animales[ia].isAdoptado());
 		
 		adopciones = Arrays.copyOf(adopciones, adopciones.length+1);
 		adopciones[adopciones.length-1] = new Adopcion(clientes[ic], animales[ia]);

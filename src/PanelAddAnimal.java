@@ -7,6 +7,7 @@ import javax.swing.SwingConstants;
 import Clases.Alimentacion;
 import Clases.Animal;
 import Clases.Enfermedad;
+import Clases.Perro;
 
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -33,6 +34,7 @@ public class PanelAddAnimal extends JPanel {
 	private JComboBox comboBoxEdad;
 	private JRadioButton checkboxAlimentoEspecial;
 	private JRadioButton[] chequeosEnfermedades = new JRadioButton[11];
+	private JComboBox comboBoxTipo;
 	JLabel lblBtnVolver;
 	JLabel lblBtnGuardar;
 	boolean modificando = false;
@@ -62,11 +64,11 @@ public class PanelAddAnimal extends JPanel {
 		JLabel labelRaza = new JLabel("Raza:");
 		labelRaza.setHorizontalAlignment(SwingConstants.CENTER);
 		labelRaza.setFont(new Font("Verdana", Font.PLAIN, 16));
-		labelRaza.setBounds(50, 190, 50, 20);
+		labelRaza.setBounds(130, 190, 50, 20);
 		add(labelRaza);
 		
 		textFieldRaza = new JTextField();
-		textFieldRaza.setBounds(110, 193, 350, 20);
+		textFieldRaza.setBounds(190, 193, 280, 20);
 		add(textFieldRaza);
 		textFieldRaza.setColumns(10);
 		
@@ -237,6 +239,18 @@ public class PanelAddAnimal extends JPanel {
 		lblBtnGuardar.setBounds(670, 665, 200, 50);
 		add(lblBtnGuardar);
 		
+		JLabel lblTipo = new JLabel("Tipo:");
+		lblTipo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTipo.setFont(new Font("Verdana", Font.PLAIN, 16));
+		lblTipo.setBounds(30, 165, 50, 20);
+		add(lblTipo);
+		
+		comboBoxTipo = new JComboBox();
+		comboBoxTipo.setModel(new DefaultComboBoxModel(new String[] {"Perro", "Gato"}));
+		comboBoxTipo.setBackground(Color.WHITE);
+		comboBoxTipo.setBounds(22, 190, 70, 20);
+		add(comboBoxTipo);
+		
 		
 	}
 	
@@ -287,6 +301,10 @@ public class PanelAddAnimal extends JPanel {
 		return textAreaReco.getText();
 	}
 	
+	public boolean isPerro() {
+		return  String.valueOf(comboBoxTipo.getSelectedItem()).equals("Perro");
+	}
+	
 	public int getEdad() {
 		String eleccion = (String) comboBoxEdad.getSelectedItem();
 		if(eleccion.equals("") || eleccion.equals("<1")) {
@@ -314,6 +332,4 @@ public class PanelAddAnimal extends JPanel {
 		}
 		return newEnfermedades;
 	}
-	
-	
 }

@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
+import Clases.Adopcion;
 import Clases.Animal;
 import Clases.Cliente;
 import Clases.Perro;
@@ -29,6 +30,9 @@ public class PanelAddAdopcion2 extends JPanel {
 	JLabel lblBtnCancelar;
 	JLabel subtitulo;
 	private String idAdopcionActual;
+	private boolean modificando = false;
+	private boolean vigencia = false;
+	private boolean ading = false;
 	
 	public PanelAddAdopcion2() {
 		setBackground(new Color(242, 242, 242));
@@ -201,6 +205,47 @@ public class PanelAddAdopcion2 extends JPanel {
 		lblBtnCancelar.setBounds(500, 580, 200, 50);
 		add(lblBtnCancelar);
 
+	}
+	
+	public String getIdAdopcion() {
+		return idAdopcionActual;
+	}
+	
+	public void modifyAdopcion(Adopcion a) {
+		modificando = true;
+		lblGetNombre.setText(a.getCliente().getName());
+		lblGetCc.setText(a.getCliente().getCc());
+		lblGetTelefono.setText(a.getCliente().getTelefono());
+		lblGetRaza.setText(a.getAnimal().getRaza());
+		lblGetId.setText(a.getAnimal().getId());
+		String tipo = a.getAnimal() instanceof Perro ? "Perro" : "Gato";
+		lblGetTipo.setText(tipo);
+		idAdopcionActual = a.getId();
+		subtitulo.setText(String.valueOf(idAdopcionActual));
+		vigencia = a.isVigencia();
+	}
+	
+	public boolean getModificando() {
+		return modificando;
+	}
+	
+	public void setModificando(boolean a) {
+		modificando = a;
+	}
+	
+	public boolean getVigencia() {
+		return vigencia;
+	}
+	
+	public void setVigencia(boolean a) {
+		vigencia = a;
+	}
+	
+	public void setAdding(boolean a) {
+		ading = a;
+	}
+	public boolean wasAding() {
+		return ading;
 	}
 	
 	public void getInfo(Cliente c, Animal a, Refugio r) {

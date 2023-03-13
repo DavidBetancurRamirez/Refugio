@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import Clases.Adopcion;
 import Clases.Animal;
 import Clases.Cliente;
 import Clases.Perro;
@@ -223,20 +224,8 @@ public class PanelAddAdopcion extends JPanel {
 		
 	}
 	
-	public void adopt(Refugio r) {
-		try {
-			r.adoptarAnimal(getCcCliente(), getIdAnimal());
-		}
-		catch(EParamNoValidos error){
-			JOptionPane.showMessageDialog(this, error.getMessage());
-		}
-		catch(ENoEncontrado error) {
-			JOptionPane.showMessageDialog(this, error.getMessage());
-		}
-		catch(EAdopcion error){
-			JOptionPane.showMessageDialog(this, error.getMessage());
-		}
-	}
+	
+
 	
 	public void limpiarCasillas() {
 		lblGetNombre.setText("");
