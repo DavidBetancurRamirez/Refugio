@@ -6,6 +6,7 @@ import javax.swing.SwingConstants;
 
 import Clases.Alimentacion;
 import Clases.Animal;
+import Clases.Chequeo;
 import Clases.Enfermedad;
 import Clases.Perro;
 
@@ -40,6 +41,8 @@ public class PanelAddAnimal extends JPanel {
 	boolean modificando = false;
 	String id;
 	Alimentacion alim;
+	JComboBox comboBoxHistorialMedico =  new JComboBox();
+	JLabel lblHistorial = new JLabel("Historial chequeos");
 
 	/**
 	 * Create the panel.
@@ -250,6 +253,18 @@ public class PanelAddAnimal extends JPanel {
 		comboBoxTipo.setBackground(Color.WHITE);
 		comboBoxTipo.setBounds(22, 190, 70, 20);
 		add(comboBoxTipo);
+		comboBoxHistorialMedico.setBackground(new Color(255, 255, 255));
+		
+//		JComboBox comboBoxHistorialMedico = new JComboBox();
+//		comboBoxHistorialMedico.setBounds(350, 473, 760, 25);
+//		comboBoxHistorialMedico.setVisible(true);
+//		add(comboBoxHistorialMedico);
+		
+//		JLabel lblHistorial = new JLabel("Historial chequeos");
+//		lblHistorial.setHorizontalAlignment(SwingConstants.CENTER);
+//		lblHistorial.setFont(new Font("Verdana", Font.BOLD, 22));
+//		lblHistorial.setBounds(90, 473, 240, 30);
+//		add(lblHistorial);
 		
 		
 	}
@@ -266,6 +281,8 @@ public class PanelAddAnimal extends JPanel {
 		modificando = false;
 		id = "";
 		alim = null;
+		comboBoxHistorialMedico.setVisible(false);
+		lblHistorial.setVisible(false);
 	}
 	
 	public void modifyAnimal(Animal a) {
@@ -283,6 +300,8 @@ public class PanelAddAnimal extends JPanel {
 		id = a.getId();
 		alim = a.getAlimentacion();
 		
+		showHistorialMedico(a.getChequeos());
+		
 //		Enfermedad[] enfer = a.getChequeos()[a.getChequeos().length-1].getEnfermedades();
 //		for(Enfermedad i : enfer) {
 //			if(Enfermedad.valueOf(chequeosEnfermedades[i.ordinal()].getText().toUpperCase()).equals(i)) {
@@ -290,6 +309,32 @@ public class PanelAddAnimal extends JPanel {
 //			}
 //		}
 		
+		
+	}
+	
+	public void showHistorialMedico(Chequeo[] checks) {
+//		comboBoxHistorialMedico = new JComboBox();
+		String[] historial = new String[0];
+		for(Chequeo i : checks) {
+			historial = Arrays.copyOf(historial, historial.length+1);
+			historial[historial.length-1] = "********************";
+			historial = Arrays.copyOf(historial, historial.length+1);
+			historial[historial.length-1] = String.valueOf(i.getFecha());
+			historial = Arrays.copyOf(historial, historial.length+1);
+			historial[historial.length-1] = Arrays.toString(i.getEnfermedades());
+			historial = Arrays.copyOf(historial, historial.length+1);
+			historial[historial.length-1] = "";
+		}
+		comboBoxHistorialMedico.setModel(new DefaultComboBoxModel(historial));
+		comboBoxHistorialMedico.setBounds(350, 473, 760, 25);
+		comboBoxHistorialMedico.setVisible(true);
+		add(comboBoxHistorialMedico);
+		
+		lblHistorial.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHistorial.setFont(new Font("Verdana", Font.BOLD, 22));
+		lblHistorial.setBounds(90, 473, 240, 30);
+		lblHistorial.setVisible(true);
+		add(lblHistorial);
 		
 	}
 	
@@ -325,11 +370,14 @@ public class PanelAddAnimal extends JPanel {
 		Enfermedad[] enfermedades = Enfermedad.values();
 		Enfermedad[] newEnfermedades = new Enfermedad[0];
 		for(int i = 0; i < enfermedades.length; i++) {
-			if(enfermedades[i].name().equals(chequeosEnfermedades[i].getText().toUpperCase())) {
+			if(enfermedades[i].name().equals(chequeosEnfermedades[i].getText().toUpperCase()) && 
+					chequeosEnfermedades[i].isSelected()) {
 				newEnfermedades = Arrays.copyOf(newEnfermedades, newEnfermedades.length+1);
 				newEnfermedades[newEnfermedades.length-1] = enfermedades[i];
 			}
+//			System.out.println(chequeosEnfermedades[i].isSelected());
 		}
+//		System.out.println(Arrays.toString(newEnfermedades));
 		return newEnfermedades;
 	}
 }
