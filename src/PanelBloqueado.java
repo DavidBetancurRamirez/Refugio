@@ -74,7 +74,7 @@ public class PanelBloqueado extends JPanel {
 		passwordField.setBounds(234, 224, 203, 41);
 		add(passwordField);
 		
-		JLabel labelCodigo = new JLabel("Contraseña:");
+		JLabel labelCodigo = new JLabel("ContraseÃ±a:");
 		labelCodigo.setFont(new Font("Verdana", Font.BOLD, 18));
 		labelCodigo.setHorizontalAlignment(SwingConstants.CENTER);
 		labelCodigo.setBounds(91, 226, 133, 28);
