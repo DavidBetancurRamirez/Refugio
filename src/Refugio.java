@@ -56,7 +56,7 @@ public class Refugio {
 	}
 	
 	public void addAnimal(String raza, String recomendaciones, int edad, double cantidadComida, boolean especial, Enfermedad[] enfermedades, boolean isPerro) throws EParamNoValidos, ESinEspacio {
-		if (validarString(raza) || edad<0 || cantidadComida<=0) throw new EParamNoValidos();
+		if (!validarString(raza) || edad<0 || cantidadComida<=0) throw new EParamNoValidos();
 		if (!hayEspacio()) throw new ESinEspacio();
 
 		Alimentacion alimentacion;
@@ -442,7 +442,7 @@ public class Refugio {
 	}
 	
 	public void modAnimal(Animal a, String raza, String recomendaciones, int edad, double cantidadComida, Alimentacion alimentacion, Enfermedad[] enfermedades) throws ENoEncontrado, EParamNoValidos {
-		if (validarString(raza) || edad<0 || cantidadComida<=0 || alimentacion==null) throw new EParamNoValidos();
+		if (!validarString(raza) || edad<0 || cantidadComida<=0 || alimentacion==null) throw new EParamNoValidos();
 				
 		a.setRaza(raza);
 		a.setRecomendaciones(recomendaciones);
@@ -468,7 +468,7 @@ public class Refugio {
 //		Cliente c = clientes[i];
 
 	public void modCliente(Cliente c, String cc, String nombre, String telefono, boolean aptoAdoptar) throws ENoEncontrado, EParamNoValidos {
-		if (validarString(cc) || validarString(nombre) || validarString(telefono)) throw new EParamNoValidos();
+		if (!validarString(cc) || !validarString(nombre) || !validarString(telefono)) throw new EParamNoValidos();
 		
 		c.setName(nombre);
 		c.setTelefono(telefono);

@@ -44,7 +44,7 @@ public class PanelAddCliente extends JPanel {
 //		add(panelBorrar);
 //		panelBorrar.setLayout(null);
 		
-		JLabel subtitulo = new JLabel("Formulario Animal");
+		JLabel subtitulo = new JLabel("Formulario Clientes");
 		subtitulo.setFont(new Font("Verdana", Font.BOLD, 22));
 		subtitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		subtitulo.setBounds(0, 90, 1200, 50);
