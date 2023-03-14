@@ -8,27 +8,20 @@ import Clases.Alimentacion;
 import Clases.Animal;
 import Clases.Chequeo;
 import Clases.Enfermedad;
-import Clases.Perro;
 
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.DropMode;
-import javax.swing.JToggleButton;
-import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Arrays;
 import java.awt.Cursor;
-import javax.swing.JFormattedTextField;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
 public class PanelAddAnimal extends JPanel {
+	private static final long serialVersionUID = 3596571454258811926L;
+	
 	private JTextField textFieldRaza;
 	private JTextField textFieldCantidad;
 	private JTextArea textAreaReco;
@@ -375,9 +368,7 @@ public class PanelAddAnimal extends JPanel {
 				newEnfermedades = Arrays.copyOf(newEnfermedades, newEnfermedades.length+1);
 				newEnfermedades[newEnfermedades.length-1] = enfermedades[i];
 			}
-//			System.out.println(chequeosEnfermedades[i].isSelected());
 		}
-//		System.out.println(Arrays.toString(newEnfermedades));
 		return newEnfermedades;
 	}
 }

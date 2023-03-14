@@ -3,44 +3,24 @@ import java.awt.Color;
 import javax.swing.JPanel;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridLayout;
-import java.awt.Component;
 import java.awt.Dimension;
-
-import javax.swing.Box;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import Clases.Animal;
 import Clases.Cliente;
 
-import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
-import java.awt.Button;
-import java.awt.event.ActionListener;
-import java.awt.geom.Ellipse2D;
-import java.awt.event.ActionEvent;
-import java.awt.Label;
-import java.awt.Shape;
 import javax.swing.ImageIcon;
-import javax.swing.JScrollBar;
-import java.awt.ScrollPane;
-import javax.swing.ScrollPaneConstants;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.Cursor;
 import javax.swing.JTextField;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
 public class PanelPrincipal extends JPanel {
+	private static final long serialVersionUID = -6266014414518571702L;
+	
 	private JSeparator separator2;
 	JPanel panelAnimales;
 	JPanel panelClientes;

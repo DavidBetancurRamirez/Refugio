@@ -1,5 +1,4 @@
 import javax.swing.JPanel;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -9,14 +8,13 @@ import java.util.Date;
 
 import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class PanelBloqueado extends JPanel {
-
+	private static final long serialVersionUID = -1507725910040779619L;
+	
 	/**
 	 * Create the panel.
 	 */

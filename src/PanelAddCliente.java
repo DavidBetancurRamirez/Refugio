@@ -1,8 +1,6 @@
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -12,13 +10,12 @@ import Clases.Cliente;
 
 import javax.swing.JRadioButton;
 import javax.swing.ImageIcon;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Arrays;
 import java.awt.Cursor;
 
 public class PanelAddCliente extends JPanel {
-
+	private static final long serialVersionUID = 3246295821068102069L;
+	
 	/**
 	 * Create the panel.
 	 */

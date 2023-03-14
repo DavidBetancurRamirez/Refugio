@@ -450,7 +450,6 @@ public class Refugio {
 		a.setAlimentacion(alimentacion);
 		if (enfermedades.length!=0) a.addChequeo(enfermedades);
 	}
-	
 
 	public void modAdopcion(String id, Cliente cliente, Animal animal, Date fechaAdopcion) throws ENoEncontrado, EParamNoValidos {
 		if (id==null || cliente==null || animal==null || fechaAdopcion==null) throw new EParamNoValidos();
@@ -465,12 +464,14 @@ public class Refugio {
 		a.setFechaAdopcion(fechaAdopcion);
 	}
 
-	public void modCliente(Cliente c, String cc, String nombre, String telefono, boolean aptoAdoptar) throws ENoEncontrado, EParamNoValidos {
+	public void modCliente(Cliente c, String cc, String nombre, String telefono, boolean[] respuestasAdopcion) throws ENoEncontrado, EParamNoValidos {
 		if (!validarString(cc) || !validarString(nombre) || !validarString(telefono)) throw new EParamNoValidos();
 		
 		c.setName(nombre);
+		c.setCc(cc);
 		c.setTelefono(telefono);
-		c.setAptoAdoptar(aptoAdoptar);
+		c.setRespuestasAdopcion(respuestasAdopcion);
+		c.setAptoAdoptar(c.clienteAptoAdoptar());
 	}
 	
 	public void subirAdopciones(File ruta) throws EParamNoValidos, IOException {
@@ -503,8 +504,7 @@ public class Refugio {
 	}
 	
 	public static boolean validarString(String str) {
-	    if (str == null || str.trim().isEmpty()) return false;
-	    return true;
+	    return (str == null || str.trim().isEmpty()) ? false : true;
 	}
 
 

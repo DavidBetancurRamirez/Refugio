@@ -12,11 +12,10 @@ import Clases.Adopcion;
 import Clases.Animal;
 import Clases.Cliente;
 import Clases.Perro;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class PanelAddAdopcion2 extends JPanel {
-
+	private static final long serialVersionUID = -6264413841543210080L;
+	
 	/**
 	 * Create the panel.
 	 */

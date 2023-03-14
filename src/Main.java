@@ -11,20 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Label;
-import java.awt.FlowLayout;
-import javax.swing.JSplitPane;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
-
-import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
@@ -35,7 +25,8 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class Main extends JFrame {
-
+	private static final long serialVersionUID = -1409088358716355451L;
+	
 	private JPanel contentPane;
 	int xMouse, yMouse;
 
@@ -248,8 +239,6 @@ public class Main extends JFrame {
 					if(panel2.getBoolean2Ad()) {
 						primerBool = panel2.getBoolean1Ad();
 					}
-					System.out.println("B1: "+primerBool);
-					System.out.println("B2: "+panel2.getBoolean2Ad());
 					Adopcion[] adopcionsitas = refugio.buscarAdopcion(primerBool, panel2.getBusquedaAd1(), panel2.getBusquedaAd2(), panel2.getBoolean2Ad());
 					pintarAdopcionesFiltro(adopcionsitas);
 				}
@@ -420,7 +409,7 @@ public class Main extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					if(panel4.getModificando()) {
-						refugio.modCliente(panel4.getAnteriorCliente(), panel4.getCc(), panel4.getNombre(), panel4.getTelefono(), panel4.getIsAptoAdoptar());
+						refugio.modCliente(panel4.getAnteriorCliente(), panel4.getCc(), panel4.getNombre(), panel4.getTelefono(), panel4.getPreguntas());
 					}
 					else {						
 						refugio.addCliente(panel4.getCc(), panel4.getNombre(), panel4.getTelefono(), panel4.getPreguntas());
@@ -582,7 +571,6 @@ public class Main extends JFrame {
 			});
 			
 			String circuloRoute = i.isAdoptado() ? "/Imagenes/circuloRojo.png": "/Imagenes/circuloVerde.png";
-//			System.out.println(i.getId()+" : "+i.isAdoptado());
 			labelCirculo = new JLabel("");
 			labelCirculo.setIcon(new ImageIcon(PanelPrincipal.class.getResource(circuloRoute)));
 			labelCirculo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -774,7 +762,6 @@ public class Main extends JFrame {
 			});
 			
 			String circuloRoute = i.isAdoptado() ? "/Imagenes/circuloRojo.png": "/Imagenes/circuloVerde.png";
-			System.out.println(i.getId()+" : "+i.isAdoptado());
 			labelCirculo = new JLabel("");
 			labelCirculo.setIcon(new ImageIcon(PanelPrincipal.class.getResource(circuloRoute)));
 			labelCirculo.setHorizontalAlignment(SwingConstants.CENTER);
