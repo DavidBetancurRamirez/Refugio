@@ -318,6 +318,7 @@ public class Main extends JFrame {
 					panel6.setModificando(false);
 					panel6.setVigencia(false);
 					panel6.setAdding(false);
+					panel6.setBotonVolver(true);
 				}
 				catch(EParamNoValidos error) {
 					JOptionPane.showMessageDialog(panel6, error.getMessage());

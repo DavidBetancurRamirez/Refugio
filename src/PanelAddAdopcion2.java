@@ -213,6 +213,9 @@ public class PanelAddAdopcion2 extends JPanel {
 	
 	public void modifyAdopcion(Adopcion a) {
 		modificando = true;
+		if(!a.isVigencia()) {
+			lblBtnCancelar.setVisible(false);
+		}
 		lblGetNombre.setText(a.getCliente().getName());
 		lblGetCc.setText(a.getCliente().getCc());
 		lblGetTelefono.setText(a.getCliente().getTelefono());
@@ -223,6 +226,10 @@ public class PanelAddAdopcion2 extends JPanel {
 		idAdopcionActual = a.getId();
 		subtitulo.setText(String.valueOf(idAdopcionActual));
 		vigencia = a.isVigencia();
+		
+	}
+	public void setBotonVolver(boolean t) {
+		lblBtnCancelar.setVisible(t);
 	}
 	
 	public boolean getModificando() {
@@ -249,6 +256,10 @@ public class PanelAddAdopcion2 extends JPanel {
 	}
 	
 	public void getInfo(Cliente c, Animal a, Refugio r, Adopcion b) {
+		
+//		if(!modificando) {
+//			lblBtnCancelar.setVisible(false);
+//		}
 		
 		//Antes de poner la info, hacer la adopcion y cambiar el titulo por el id de la adopcion
 		lblGetNombre.setText(c.getName());
