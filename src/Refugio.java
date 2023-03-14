@@ -44,7 +44,6 @@ public class Refugio {
 
 		Adopcion.cantidad = adopciones.length+1;
 		animales[ia].setAdoptado(true);
-//		System.out.println(animales[ia].isAdoptado());
 		
 		Adopcion.cantidad = adopciones.length+1;
 		
@@ -465,7 +464,6 @@ public class Refugio {
 		a.setAnimal(animal);
 		a.setFechaAdopcion(fechaAdopcion);
 	}
-//		Cliente c = clientes[i];
 
 	public void modCliente(Cliente c, String cc, String nombre, String telefono, boolean aptoAdoptar) throws ENoEncontrado, EParamNoValidos {
 		if (!validarString(cc) || !validarString(nombre) || !validarString(telefono)) throw new EParamNoValidos();
