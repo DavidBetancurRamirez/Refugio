@@ -248,7 +248,7 @@ public class PanelAddAdopcion2 extends JPanel {
 		return ading;
 	}
 	
-	public void getInfo(Cliente c, Animal a, Refugio r) {
+	public void getInfo(Cliente c, Animal a, Refugio r, Adopcion b) {
 		
 		//Antes de poner la info, hacer la adopcion y cambiar el titulo por el id de la adopcion
 		lblGetNombre.setText(c.getName());
@@ -260,9 +260,9 @@ public class PanelAddAdopcion2 extends JPanel {
 		String tipo = a instanceof Perro ? "Perro" : "Gato";
 		lblGetTipo.setText(tipo);
 		a.setAdoptado(true);
-		idAdopcionActual = r.getAdopciones()[r.buscarAdopcionIdAnimal(a.getId())].getId();
-		
-		subtitulo.setText(String.valueOf(idAdopcionActual));
+//		idAdopcionActual = r.getAdopciones()[r.buscarAdopcionIdAnimal(a.getId())].getId();
+		idAdopcionActual = b.getId();
+		subtitulo.setText(idAdopcionActual);
 		
 	}
 

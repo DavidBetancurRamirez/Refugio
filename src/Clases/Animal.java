@@ -24,7 +24,7 @@ public abstract class Animal implements Serializable {
 
     
     public Animal(String raza, String recomendaciones, int edad, double cantidadComida, Alimentacion alimentacion, Enfermedad[] enfermedades) {
-		this.id = "animal_"+ ++cantidad;
+		this.id = "animal_"+ cantidad;
         this.raza = raza;
         this.recomendaciones = recomendaciones;
         this.edad = edad;

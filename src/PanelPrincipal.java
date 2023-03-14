@@ -37,6 +37,8 @@ import java.awt.event.MouseEvent;
 import java.awt.Cursor;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class PanelPrincipal extends JPanel {
 	private JSeparator separator2;
@@ -48,6 +50,22 @@ public class PanelPrincipal extends JPanel {
 	JLabel lblBtnAdoptar;
 	private JTextField textFieldIdAnimal;
 	private JTextField textFieldIdCliente;
+	
+	JLabel lblCirculoA;
+	private JTextField textFieldFiltroA;
+	JComboBox comboBoxTipoFiltroA;
+	JComboBox comboBoxTipoA;
+	JLabel lblBtnBuscarA;
+	
+	JLabel lblCirculoC;
+	private JTextField textFieldFiltroC;
+	JComboBox comboBoxTipoFiltroC;
+	JLabel lblBtnBuscarC;
+	
+	JLabel lblCirculoAd;
+	private JTextField textFieldFiltroAd;
+	JComboBox comboBoxTipoFiltroAd;
+	JLabel lblBtnBuscarAd;
 
 	/**
 	 * Create the panel.
@@ -236,11 +254,68 @@ public class PanelPrincipal extends JPanel {
 		add(panelFiltrosAnimales);
 		panelFiltrosAnimales.setLayout(null);
 		
+		//Empieza
+		lblCirculoA = new JLabel("");
+		lblCirculoA.setIcon(new ImageIcon(PanelPrincipal.class.getResource("/Imagenes/circuloBlanco.png")));
+		lblCirculoA.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCirculoA.setBounds(5, 6, 35, 28);
+		panelFiltrosAnimales.add(lblCirculoA);
+		
+		textFieldFiltroA = new JTextField();
+		textFieldFiltroA.setBounds(47, 6, 220, 28);
+		panelFiltrosAnimales.add(textFieldFiltroA);
+		textFieldFiltroA.setColumns(10);
+		
+		comboBoxTipoFiltroA = new JComboBox();
+		comboBoxTipoFiltroA.setModel(new DefaultComboBoxModel(new String[] {"Id", "Raza", "Edad"}));
+		comboBoxTipoFiltroA.setFont(new Font("Verdana", Font.PLAIN, 12));
+		comboBoxTipoFiltroA.setBounds(274, 6, 60, 28);
+		panelFiltrosAnimales.add(comboBoxTipoFiltroA);
+		
+		comboBoxTipoA = new JComboBox();
+		comboBoxTipoA.setModel(new DefaultComboBoxModel(new String[] {"Perro", "Gato", "todos"}));
+		comboBoxTipoA.setFont(new Font("Verdana", Font.PLAIN, 12));
+		comboBoxTipoA.setBounds(341, 6, 60, 28);
+		panelFiltrosAnimales.add(comboBoxTipoA);
+		
+		lblBtnBuscarA = new JLabel("");
+		lblBtnBuscarA.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblBtnBuscarA.setIcon(new ImageIcon(PanelPrincipal.class.getResource("/Imagenes/btnBuscar.png")));
+		lblBtnBuscarA.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBtnBuscarA.setBounds(408, 6, 110, 28);
+		panelFiltrosAnimales.add(lblBtnBuscarA);
+		//Termina
+		
+		//Empieza Cliente Filtros
 		JPanel panelFiltrosClientes = new JPanel();
 		panelFiltrosClientes.setLayout(null);
 		panelFiltrosClientes.setBackground(new Color(136, 218, 232));
 		panelFiltrosClientes.setBounds(650, 148, 525, 40);
 		add(panelFiltrosClientes);
+		
+		lblCirculoC = new JLabel("");
+		lblCirculoC.setIcon(new ImageIcon(PanelPrincipal.class.getResource("/Imagenes/circuloBlanco.png")));
+		lblCirculoC.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCirculoC.setBounds(5, 6, 35, 28);
+		panelFiltrosClientes.add(lblCirculoC);
+		
+		textFieldFiltroC = new JTextField();
+		textFieldFiltroC.setColumns(10);
+		textFieldFiltroC.setBounds(50, 6, 260, 28);
+		panelFiltrosClientes.add(textFieldFiltroC);
+		
+		comboBoxTipoFiltroC = new JComboBox();
+		comboBoxTipoFiltroC.setModel(new DefaultComboBoxModel(new String[] {"CC", "Nombre"}));
+		comboBoxTipoFiltroC.setBounds(320, 6, 65, 28);
+		panelFiltrosClientes.add(comboBoxTipoFiltroC);
+		
+		lblBtnBuscarC = new JLabel("");
+		lblBtnBuscarC.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblBtnBuscarC.setIcon(new ImageIcon(PanelPrincipal.class.getResource("/Imagenes/btnBuscar.png")));
+		lblBtnBuscarC.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBtnBuscarC.setBounds(400, 6, 110, 28);
+		panelFiltrosClientes.add(lblBtnBuscarC);
+		//Termina filtros clientes
 		
 		JLabel tituloCllientes = new JLabel("Clientes");
 		tituloCllientes.setFont(new Font("Verdana", Font.BOLD, 25));
@@ -441,11 +516,36 @@ public class PanelPrincipal extends JPanel {
 ////		});
 		
 		//Termina
+		
 		JPanel panelFiltrosAdopciones = new JPanel();
 		panelFiltrosAdopciones.setLayout(null);
 		panelFiltrosAdopciones.setBackground(new Color(136, 218, 232));
 		panelFiltrosAdopciones.setBounds(500, 495, 675, 40);
 		add(panelFiltrosAdopciones);
+		
+		//Empieza filtros Adopcion
+		lblCirculoAd = new JLabel("");
+		lblCirculoAd.setIcon(new ImageIcon(PanelPrincipal.class.getResource("/Imagenes/circuloBlanco.png")));
+		lblCirculoAd.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCirculoAd.setBounds(5, 6, 35, 28);
+		panelFiltrosAdopciones.add(lblCirculoAd);
+		
+		textFieldFiltroAd = new JTextField();
+		textFieldFiltroAd.setColumns(10);
+		textFieldFiltroAd.setBounds(50, 6, 340, 28);
+		panelFiltrosAdopciones.add(textFieldFiltroAd);
+		
+		comboBoxTipoFiltroAd = new JComboBox();
+		comboBoxTipoFiltroAd.setModel(new DefaultComboBoxModel(new String[] {"idAdopcion", "idAnimal", "idCliente"}));
+		comboBoxTipoFiltroAd.setBounds(405, 6, 100, 28);
+		panelFiltrosAdopciones.add(comboBoxTipoFiltroAd);
+		
+		lblBtnBuscarAd = new JLabel("");
+		lblBtnBuscarAd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblBtnBuscarAd.setIcon(new ImageIcon(PanelPrincipal.class.getResource("/Imagenes/btnBuscar.png")));
+		lblBtnBuscarAd.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBtnBuscarAd.setBounds(530, 6, 110, 28);
+		panelFiltrosAdopciones.add(lblBtnBuscarAd);
 	
 
 	}
@@ -456,9 +556,84 @@ public class PanelPrincipal extends JPanel {
 		return r.getClientes()[r.buscarClienteCc(textFieldIdCliente.getText())];
 	}
 	
+	public void changeColorCirculoA(String c) {
+		lblCirculoA.setIcon(new ImageIcon(PanelPrincipal.class.getResource(c)));
+	}
+	public void changeColorCirculoC(String c) {
+		lblCirculoC.setIcon(new ImageIcon(PanelPrincipal.class.getResource(c)));
+	}
+	public void changeColorCirculoAd(String c) {
+		lblCirculoAd.setIcon(new ImageIcon(PanelPrincipal.class.getResource(c)));
+	}
+	
+	public String getBusquedaA1() {
+		return textFieldFiltroA.getText();
+	}
+	public String getBusquedaA2() {
+		return String.valueOf(comboBoxTipoFiltroA.getSelectedItem());
+	}
+	public String getBusquedaA3() {
+		return String.valueOf(comboBoxTipoA.getSelectedItem());
+	}
+	public boolean getBoolean2() {
+		return !(String.valueOf(lblCirculoA.getIcon()).indexOf("circuloBlanco.png") != -1);
+	}
+	public boolean getBoolean1() {
+		return (String.valueOf(lblCirculoA.getIcon()).indexOf("circuloBlancoVerde.png") != -1);
+	}
+	
+	public String getAnimalAdopt() {
+		return String.valueOf(lblCirculoA.getIcon());
+	}
+	
+	public boolean getBoolean1C() {
+		return (String.valueOf(lblCirculoC.getIcon()).indexOf("circuloBlancoVerde.png") != -1);
+	}
+	public boolean getBoolean2C() {
+		return !(String.valueOf(lblCirculoC.getIcon()).indexOf("circuloBlanco.png") != -1);
+	}
+	public String getBusquedaC1() {
+		return textFieldFiltroC.getText();
+	}
+	public String getBusquedaC2() {
+		return String.valueOf(comboBoxTipoFiltroC.getSelectedItem()).toLowerCase();
+	}
+	
+	public boolean getBoolean1Ad() {
+		return (String.valueOf(lblCirculoAd.getIcon()).indexOf("circuloBlancoVerde.png") != -1);
+	}
+	public boolean getBoolean2Ad() {
+		return !(String.valueOf(lblCirculoAd.getIcon()).indexOf("circuloBlanco.png") != -1);
+	}
+	public String getBusquedaAd1() {
+		return textFieldFiltroAd.getText();
+	}
+	public String getBusquedaAd2() {
+		return String.valueOf(comboBoxTipoFiltroAd.getSelectedItem());
+	}
+	
 	public void limpiarAdopcion() {
 		textFieldIdAnimal.setText("");
 		textFieldIdCliente.setText("");
+	}
+	
+	public void limpiarFiltrosBsuqueda() {
+		//Limpiando filtros Animal
+		lblCirculoA.setIcon(new ImageIcon(PanelPrincipal.class.getResource("/Imagenes/circuloBlanco.png")));
+		textFieldFiltroA.setText("");
+		comboBoxTipoFiltroA.setSelectedIndex(0);
+		comboBoxTipoA.setSelectedIndex(0);
+		
+		//Limpiando filtros Cliente
+		lblCirculoC.setIcon(new ImageIcon(PanelPrincipal.class.getResource("/Imagenes/circuloBlanco.png")));
+		textFieldFiltroC.setText("");
+		comboBoxTipoFiltroC.setSelectedIndex(0);
+		
+		//Limpiando filtros adopcion
+		lblCirculoAd.setIcon(new ImageIcon(PanelPrincipal.class.getResource("/Imagenes/circuloBlanco.png")));
+		textFieldFiltroAd.setText("");
+		comboBoxTipoFiltroAd.setSelectedIndex(0);
+		
 	}
 	
 	public void generateTablaAdopciones() {

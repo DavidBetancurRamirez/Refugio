@@ -30,7 +30,7 @@ public class Refugio {
 	}
 	
 	
-	public void adoptarAnimal(String ccCliente, String idAnimal) throws EParamNoValidos, ENoEncontrado, EAdopcion {
+	public Adopcion adoptarAnimal(String ccCliente, String idAnimal) throws EParamNoValidos, ENoEncontrado, EAdopcion {
 		if (!validarString(ccCliente) || !validarString(idAnimal)) throw new EParamNoValidos();
 		
 		int ic = buscarClienteCc(ccCliente);
@@ -45,8 +45,14 @@ public class Refugio {
 		animales[ia].setAdoptado(true);
 //		System.out.println(animales[ia].isAdoptado());
 		
+		Adopcion.cantidad = adopciones.length+1;
+		
 		adopciones = Arrays.copyOf(adopciones, adopciones.length+1);
-		adopciones[adopciones.length-1] = new Adopcion(clientes[ic], animales[ia]);
+		Adopcion a =  new Adopcion(clientes[ic], animales[ia]);
+		adopciones[adopciones.length-1] = a;
+		
+		return a;
+		
 	}
 	
 	public void addAnimal(String raza, String recomendaciones, int edad, double cantidadComida, boolean especial, Enfermedad[] enfermedades, boolean isPerro) throws EParamNoValidos, ESinEspacio {
@@ -54,8 +60,8 @@ public class Refugio {
 		if (!hayEspacio()) throw new ESinEspacio();
 		
 		Alimentacion alimentacion;
+		Animal.cantidad = animales.length+1;
 		animales = Arrays.copyOf(animales, animales.length+1);
-		
 		if (isPerro) {
 			alimentacion = (especial) ? Alimentacion.ESPECIAL : Alimentacion.PERRO;
 			animales[animales.length-1] = new Perro(raza, recomendaciones, edad, cantidadComida, alimentacion, enfermedades);
@@ -470,6 +476,8 @@ public class Refugio {
 		
 		adopcion.setVigencia(false);
 		adopcion.getAnimal().setAdoptado(false);
+		
+		animales[buscarAnimalId(adopcion.getAnimal().getId())].setAdoptado(false);
 	}
 	
 	public static boolean validarString(String str) {
