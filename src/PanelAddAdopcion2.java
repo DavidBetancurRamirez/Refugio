@@ -193,14 +193,14 @@ public class PanelAddAdopcion2 extends JPanel {
 		
 		lblBtnVolver = new JLabel("");
 		lblBtnVolver.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		lblBtnVolver.setIcon(new ImageIcon(PanelAddAdopcion.class.getResource("/Imagenes/volver.png")));
+		lblBtnVolver.setIcon(new ImageIcon(PanelAddAdopcion2.class.getResource("/Imagenes/volver.png")));
 		lblBtnVolver.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBtnVolver.setBounds(500, 660, 200, 50);
 		add(lblBtnVolver);
 		
 		lblBtnCancelar = new JLabel("");
 		lblBtnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		lblBtnCancelar.setIcon(new ImageIcon(PanelAddAdopcion.class.getResource("/Imagenes/cancelarAdopcion.png")));
+		lblBtnCancelar.setIcon(new ImageIcon(PanelAddAdopcion2.class.getResource("/Imagenes/cancelarAdopcion.png")));
 		lblBtnCancelar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBtnCancelar.setBounds(500, 580, 200, 50);
 		add(lblBtnCancelar);

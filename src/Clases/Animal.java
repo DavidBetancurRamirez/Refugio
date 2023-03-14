@@ -35,8 +35,10 @@ public abstract class Animal implements Serializable {
     }
 
     public void addChequeo(Enfermedad[] enfermedades){
-        chequeos= Arrays.copyOf(chequeos,chequeos.length+1);
-	    chequeos[chequeos.length-1]=new Chequeo(enfermedades);
+    	if (enfermedades.length!=0) {
+            chequeos= Arrays.copyOf(chequeos,chequeos.length+1);
+    	    chequeos[chequeos.length-1]=new Chequeo(enfermedades);
+    	}
     }
 
     public void escribirObjeto(String address) throws IOException {
