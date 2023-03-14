@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 import java.util.Arrays;
+import java.util.Date;
 
 import Clases.*;
 
@@ -43,6 +44,9 @@ public class Refugio {
 
 		Adopcion.cantidad = adopciones.length+1;
 		animales[ia].setAdoptado(true);
+//		System.out.println(animales[ia].isAdoptado());
+		
+		Adopcion.cantidad = adopciones.length+1;
 		
 		Adopcion a = new Adopcion(clientes[ic], animales[ia]);
 		adopciones = Arrays.copyOf(adopciones, adopciones.length+1);
@@ -58,7 +62,6 @@ public class Refugio {
 		Alimentacion alimentacion;
 		Animal.cantidad = animales.length+1;
 		animales = Arrays.copyOf(animales, animales.length+1);
-		
 		if (isPerro) {
 			alimentacion = (especial) ? Alimentacion.ESPECIAL : Alimentacion.PERRO;
 			animales[animales.length-1] = new Perro(raza, recomendaciones, edad, cantidadComida, alimentacion, enfermedades);
@@ -404,6 +407,7 @@ public class Refugio {
 		int i = buscarAdopcionId(id);
 		if (i==-1) throw new ENoEncontrado("No se encontro la adopcion con id "+id);;
 		
+		
 		System.arraycopy(adopciones, i+1, adopciones, i, adopciones.length-i-1);
 		adopciones = Arrays.copyOf(adopciones, adopciones.length-1);
 	}
@@ -448,6 +452,21 @@ public class Refugio {
 		if (enfermedades.length!=0) a.addChequeo(enfermedades);
 	}
 	
+
+	public void modAdopcion(String id, Cliente cliente, Animal animal, Date fechaAdopcion) throws ENoEncontrado, EParamNoValidos {
+		if (id==null || cliente==null || animal==null || fechaAdopcion==null) throw new EParamNoValidos();
+		
+		int i = buscarAdopcionId(id);
+		if (i==-1) throw new ENoEncontrado("No se encontro la adopcion con id "+id);
+		
+		Adopcion a = adopciones[i];
+
+		a.setCliente(cliente);
+		a.setAnimal(animal);
+		a.setFechaAdopcion(fechaAdopcion);
+	}
+//		Cliente c = clientes[i];
+
 	public void modCliente(Cliente c, String cc, String nombre, String telefono, boolean aptoAdoptar) throws ENoEncontrado, EParamNoValidos {
 		if (!validarString(cc) || !validarString(nombre) || !validarString(telefono)) throw new EParamNoValidos();
 		
