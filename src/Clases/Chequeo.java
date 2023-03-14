@@ -6,14 +6,14 @@ import java.util.Date;
 
 public class Chequeo implements Serializable {
 	private static final long serialVersionUID = 2L;
-	private static int cantidad = 0;
+	public static int cantidad = 0;
 	
 	private String id;
     private Date fecha;
     private Enfermedad[] enfermedades;
 
     public Chequeo(Enfermedad[] enfermedades) {
-		this.id = "chequeo_"+ ++cantidad;
+		this.id = "chequeo_"+ cantidad;
 		this.fecha = new Date();
         this.enfermedades = enfermedades;
     }

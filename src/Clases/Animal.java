@@ -24,7 +24,7 @@ public abstract class Animal implements Serializable {
 
     
     public Animal(String raza, String recomendaciones, int edad, double cantidadComida, Alimentacion alimentacion, Enfermedad[] enfermedades) {
-		this.id = "animal_"+ ++cantidad;
+		this.id = "animal_"+ cantidad;
         this.raza = raza;
         this.recomendaciones = recomendaciones;
         this.edad = edad;
@@ -35,8 +35,10 @@ public abstract class Animal implements Serializable {
     }
 
     public void addChequeo(Enfermedad[] enfermedades){
-        chequeos= Arrays.copyOf(chequeos,chequeos.length+1);
-	    chequeos[chequeos.length-1]=new Chequeo(enfermedades);
+    	if (enfermedades.length!=0) {
+            chequeos= Arrays.copyOf(chequeos,chequeos.length+1);
+    	    chequeos[chequeos.length-1]=new Chequeo(enfermedades);
+    	}
     }
 
     public void escribirObjeto(String address) throws IOException {

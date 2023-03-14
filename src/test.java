@@ -40,6 +40,7 @@ public class test {
 			System.out.println(e.getMessage());
 		}
 		*/
+		
 		/*
 		try {
 			// Lectura de ficheros
@@ -49,11 +50,52 @@ public class test {
 						
 			
 			// Metodos varios
-			Adopcion adopcion = r.getAdopciones()[0];
-			System.out.println(adopcion);
-			r.reingresoAnimal(adopcion);
-			System.out.println(adopcion);
+			Adopcion[] adopciones = r.getAdopciones();
 			
+			r.reingresoAnimal(adopciones[0]);
+			r.adoptarAnimal("1038262298", "animal_1");
+			
+			boolean[] respuestas = {true,false,true,false,true,false,true,false,true};
+			r.addCliente("4165", "David Betancur", "3046290058", respuestas);
+			
+			adopciones = r.getAdopciones();
+			
+			Cliente[] clientes = r.buscarCliente(true, "David Betancur", "nombre", false);
+			for (Cliente cliente : clientes) {
+				System.out.println(cliente);
+			}
+			
+			
+			/*
+			boolean[] respuestas = {true,false,true,false,true,false,true,false,true};
+			r.addCliente("1038262298", "alguien doble", "2185618", respuestas);
+			*/
+			/*
+			Adopcion[] adopciones = r.getAdopciones();
+			
+			System.out.println("animal:" + r.getAnimales()[0]);
+			
+			r.reingresoAnimal(adopciones[0]);
+			
+			System.out.println("\n\nanimal:" + r.getAnimales()[0]);
+
+			r.adoptarAnimal("1038262298", "animal_1");
+
+			System.out.println("\n\nanimal:" + r.getAnimales()[0]);
+			System.out.println("");
+			adopciones = r.getAdopciones();
+			for (Adopcion adopcion : adopciones) {
+				System.out.println(adopcion);
+			}
+
+			r.reingresoAnimal(adopciones[3]);
+			System.out.println("");
+			adopciones = r.getAdopciones();
+
+			System.out.println("animal:" + r.getAnimales()[0]);
+			*/
+			
+			/*
 			adopcion = r.buscarAdopcion(true, "adopcion_2", "idAdopcion", true)[0];
 			System.out.println(adopcion);
 			
@@ -78,10 +120,10 @@ public class test {
 			for (Animal animal2 : animal) {
 				System.out.println(animal2);
 			}
-			
+			*//*
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-		}
-		*/
+		}*/
+		
 	}
 }

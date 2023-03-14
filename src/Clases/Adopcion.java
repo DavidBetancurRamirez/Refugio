@@ -20,7 +20,7 @@ public class Adopcion implements Serializable {
 	private boolean vigencia;
 	
 	public Adopcion(Cliente cliente, Animal animal) {
-		this.id = "adopcion_"+ ++cantidad;
+		this.id = "adopcion_"+ cantidad;
 		this.cliente=cliente;
 		this.animal=animal;
 		this.fechaAdopcion = new Date();
