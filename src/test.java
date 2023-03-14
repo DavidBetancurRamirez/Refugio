@@ -8,7 +8,7 @@ public class test {
 		Refugio r = new Refugio(5);
 		File ruta = new File("src\\Ficheros");
 		
-		/*
+		
 		try {
 			// Agregando por primer vez a los ficheros
 			Enfermedad[] enfermedades = {Enfermedad.ALERGIA, Enfermedad.INFECCION};
@@ -39,7 +39,7 @@ public class test {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		*/
+		
 		
 		/*
 		try {
