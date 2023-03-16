@@ -34,7 +34,7 @@ public class Cliente implements Serializable {
 			}
 		}
 
-		return (puntaje>=14) ? true : false;
+		return puntaje>=14;
 	}
 	
 	public void escribirObjeto(String address) throws IOException {
@@ -43,17 +43,6 @@ public class Cliente implements Serializable {
 		o.writeObject(this);
 		o.close();
 		f.close();
-	}
-
-	public void leerObjetos(File f) throws IOException, ClassNotFoundException {
-		FileInputStream in = new FileInputStream(f);
-		ObjectInputStream o = new ObjectInputStream(in);
-		Cliente cl = (Cliente) o.readObject();
-		this.cc = cl.cc;
-		this.name = cl.name;
-		this.telefono = cl.telefono;
-		o.close();
-		in.close();
 	}
 
 	

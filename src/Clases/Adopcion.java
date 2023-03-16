@@ -34,16 +34,6 @@ public class Adopcion implements Serializable {
         o.close();
         f.close();
     }
-
-    public void leerObjeto(File f)throws IOException,ClassNotFoundException{
-        FileInputStream in = new FileInputStream(f);
-        ObjectInputStream o=new ObjectInputStream(in);
-        Adopcion ad=(Adopcion) o.readObject();
-        this.cliente = ad.cliente;
-        this.animal = ad.animal;
-        o.close();
-        in.close();
-    }
 	
 
 	public String getId() {

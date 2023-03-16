@@ -73,19 +73,11 @@ public class PanelPrincipal extends JPanel {
 		scrollPaneAnimales.setBounds(25, 188, 544, 260);
 		add(scrollPaneAnimales);
 		
-//		JScrollPane scrollPaneAnimales = new JScrollPane();
-//		scrollPaneAnimales.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-//		scrollPaneAnimales.setBounds(0, 0, 2, 2);
-//		add(scrollPaneAnimales);
-		
 		panelAnimales = new JPanel();
 		scrollPaneAnimales.setViewportView(panelAnimales);
 		panelAnimales.setPreferredSize(new Dimension(525, 930));
 		panelAnimales.setBackground(new Color(61, 170, 190));
-//		add(panelAnimales);
 		panelAnimales.setLayout(null);
-//		add(scrollAnimal);
-//		panelAnimales.setPreferredSize(new Dimension(800, 800));
 	
 		
 
@@ -459,11 +451,15 @@ public class PanelPrincipal extends JPanel {
 	
 
 	}
-	public Animal getAnimal(Refugio r){
-		return r.getAnimales()[r.buscarAnimalId(textFieldIdAnimal.getText())];
+	public Animal getAnimal(Refugio r) throws ENoEncontrado {
+		int i = r.buscarAnimalId(textFieldIdAnimal.getText());
+		if (i==-1) throw new ENoEncontrado("No existe animal con este id");
+		return r.getAnimales()[i];
 	}
-	public Cliente getCliente(Refugio r) {
-		return r.getClientes()[r.buscarClienteCc(textFieldIdCliente.getText())];
+	public Cliente getCliente(Refugio r) throws ENoEncontrado {
+		int i = r.buscarClienteCc(textFieldIdCliente.getText());
+		if (i==-1) throw new ENoEncontrado("No existe cliente con esta cc");
+		return r.getClientes()[i];
 	}
 	
 	public void changeColorCirculoA(String c) {

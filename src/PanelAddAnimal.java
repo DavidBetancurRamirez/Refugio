@@ -212,7 +212,7 @@ public class PanelAddAnimal extends JPanel {
 		textAreaReco.setBounds(350, 517, 760, 100);
 		add(textAreaReco);
 		
-		JLabel lblRecomendaciones = new JLabel("Recomendaciones");
+		JLabel lblRecomendaciones = new JLabel("Recomendacion");
 		lblRecomendaciones.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRecomendaciones.setFont(new Font("Verdana", Font.BOLD, 22));
 		lblRecomendaciones.setBounds(90, 552, 240, 30);
@@ -247,20 +247,7 @@ public class PanelAddAnimal extends JPanel {
 		comboBoxTipo.setBackground(Color.WHITE);
 		comboBoxTipo.setBounds(22, 190, 70, 20);
 		add(comboBoxTipo);
-		comboBoxHistorialMedico.setBackground(new Color(255, 255, 255));
-		
-//		JComboBox comboBoxHistorialMedico = new JComboBox();
-//		comboBoxHistorialMedico.setBounds(350, 473, 760, 25);
-//		comboBoxHistorialMedico.setVisible(true);
-//		add(comboBoxHistorialMedico);
-		
-//		JLabel lblHistorial = new JLabel("Historial chequeos");
-//		lblHistorial.setHorizontalAlignment(SwingConstants.CENTER);
-//		lblHistorial.setFont(new Font("Verdana", Font.BOLD, 22));
-//		lblHistorial.setBounds(90, 473, 240, 30);
-//		add(lblHistorial);
-		
-		
+		comboBoxHistorialMedico.setBackground(new Color(255, 255, 255));	
 	}
 	
 	public void limpiarCasillas() {
@@ -296,20 +283,10 @@ public class PanelAddAnimal extends JPanel {
 		int indexA = a instanceof Perro ? 0:1;
 		comboBoxTipo.setSelectedIndex(indexA);	
 		
-		showHistorialMedico(a.getChequeos());
-		
-//		Enfermedad[] enfer = a.getChequeos()[a.getChequeos().length-1].getEnfermedades();
-//		for(Enfermedad i : enfer) {
-//			if(Enfermedad.valueOf(chequeosEnfermedades[i.ordinal()].getText().toUpperCase()).equals(i)) {
-//				chequeosEnfermedades[i.ordinal()].setSelected(true);
-//			}
-//		}
-		
-		
+		showHistorialMedico(a.getChequeos());		
 	}
 	
 	public void showHistorialMedico(Chequeo[] checks) {
-//		comboBoxHistorialMedico = new JComboBox();
 		String[] historial = new String[0];
 		for(Chequeo i : checks) {
 			historial = Arrays.copyOf(historial, historial.length+1);

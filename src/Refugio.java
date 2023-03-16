@@ -22,13 +22,6 @@ public class Refugio {
 		this.clientes = new Cliente[0];
 	}
 	
-	public Refugio(int capacidad, Adopcion[] adopciones, Animal[] animales, Cliente[] clientes) {
-		this.capacidad = capacidad;
-		this.adopciones = adopciones;
-		this.animales = animales;
-		this.clientes = clientes;
-	}
-	
 	
 	public Adopcion adoptarAnimal(String ccCliente, String idAnimal) throws EParamNoValidos, ENoEncontrado, EAdopcion {
 		if (!validarString(ccCliente) || !validarString(idAnimal)) throw new EParamNoValidos();
@@ -42,12 +35,11 @@ public class Refugio {
 		
 		if (!clientes[ic].isAptoAdoptar() || animales[ia].isAdoptado()) throw new EAdopcion("No se pudo realizar la adopcion");
 
-		Adopcion.cantidad = adopciones.length+1;
 		animales[ia].setAdoptado(true);
 		
 		Adopcion.cantidad = adopciones.length+1;
-		
 		Adopcion a = new Adopcion(clientes[ic], animales[ia]);
+		
 		adopciones = Arrays.copyOf(adopciones, adopciones.length+1);
 		adopciones[adopciones.length-1] = a;
 		
@@ -71,7 +63,8 @@ public class Refugio {
 	}
 	
 	public void addCliente(String cc, String nombre, String telefono, boolean[] respuestas) throws EParamNoValidos, ENoEncontrado {
-		if (!validarString(cc) || !validarString(nombre) || !validarString(telefono) || respuestas.length!=9 || respuestas==null) throw new EParamNoValidos();
+		if (!validarString(cc) || !validarString(nombre) || !validarString(telefono) || respuestas.length!=9 
+				|| respuestas==null || !validarNumeros(telefono) || !validarNumeros(cc)) throw new EParamNoValidos();
 		
 		if (buscarClienteCc(cc)!=-1) throw new ENoEncontrado("El cliente con cedula "+cc+" ya existe");
 		
@@ -404,31 +397,6 @@ public class Refugio {
 		}
 	}
 	
-	public void eliminarAdopcion(String id) throws ENoEncontrado {
-		int i = buscarAdopcionId(id);
-		if (i==-1) throw new ENoEncontrado("No se encontro la adopcion con id "+id);;
-		
-		
-		System.arraycopy(adopciones, i+1, adopciones, i, adopciones.length-i-1);
-		adopciones = Arrays.copyOf(adopciones, adopciones.length-1);
-	}
-	
-	public void eliminarAnimal(String id) throws ENoEncontrado {
-		int i = buscarAnimalId(id);
-		if (i==-1) throw new ENoEncontrado("No se encontro el animal con id "+id);
-		
-		System.arraycopy(animales, i+1, animales, i, animales.length-i-1);
-		animales = Arrays.copyOf(animales, animales.length-1);
-	}
-
-	public void eliminarCliente(String cc) throws ENoEncontrado {
-		int i = buscarClienteCc(cc);
-		if (i==-1) throw new ENoEncontrado("No se encontro el cliente con cc "+cc);
-		
-		System.arraycopy(clientes, i+1, clientes, i, clientes.length-i-1);
-		clientes = Arrays.copyOf(clientes, clientes.length-1);
-	}
-	
 	public int getCantidadAnimales() {
 		int cantidad = 0;
 		for (Animal animal : animales) {
@@ -506,6 +474,9 @@ public class Refugio {
 	
 	private static boolean validarString(String str) {
 	    return (str == null || str.trim().isEmpty()) ? false : true;
+	}
+	private static boolean validarNumeros(String str) {
+		return str.matches("\\d+");
 	}
 
 
