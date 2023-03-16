@@ -8,6 +8,7 @@ import Clases.Alimentacion;
 import Clases.Animal;
 import Clases.Chequeo;
 import Clases.Enfermedad;
+import Clases.Perro;
 
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -292,6 +293,8 @@ public class PanelAddAnimal extends JPanel {
 		checkboxAlimentoEspecial.setSelected(a.getAlimentacion().name().equals("ESPECIAL"));
 		id = a.getId();
 		alim = a.getAlimentacion();
+		int indexA = a instanceof Perro ? 0:1;
+		comboBoxTipo.setSelectedIndex(indexA);
 		
 		showHistorialMedico(a.getChequeos());
 		
