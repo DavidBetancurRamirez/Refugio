@@ -68,7 +68,7 @@ public class Main extends JFrame {
 	
 	
 	
-	Refugio refugio = new Refugio(30);
+	Refugio refugio = new Refugio(2);
 	File ruta = new File("src\\Ficheros");
 	
 	public Main() {
@@ -288,9 +288,6 @@ public class Main extends JFrame {
 				catch(EAdopcion error) {
 					JOptionPane.showMessageDialog(panel2, error.getMessage());
 				}
-				catch(ArrayIndexOutOfBoundsException error) {
-					JOptionPane.showMessageDialog(panel2, "Datos incorrectos");
-				}
 				catch(IOException error) {
 					JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
 				} 
@@ -347,14 +344,6 @@ public class Main extends JFrame {
 			}
 		});
 		
-//		panel2.btnActualizar.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				limpiarPanelPrincipal();
-//				pintarAnimalesClientes(refugio.getAnimales());
-//				
-//			}
-//		});
-		
 		panel3.lblBtnVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -386,7 +375,7 @@ public class Main extends JFrame {
 					panel3.limpiarCasillas();
 				}
 				catch(NumberFormatException error) {
-					JOptionPane.showMessageDialog(panel3, "Formato invalido en Cantidad, \n Use . para decimales");
+					JOptionPane.showMessageDialog(panel3, "La cantidad no es valida");
 				}
 				catch(ENoEncontrado error) {
 					JOptionPane.showMessageDialog(panel3, error.getMessage());

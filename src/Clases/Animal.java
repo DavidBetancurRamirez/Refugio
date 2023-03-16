@@ -48,19 +48,6 @@ public abstract class Animal implements Serializable {
         o.close();
         f.close();
     }
-
-    public void leerObjetos(File f)throws IOException,ClassNotFoundException{
-        FileInputStream in = new FileInputStream(f);
-        ObjectInputStream o=new ObjectInputStream(in);
-        Animal est=(Animal) o.readObject();
-        this.raza = est.raza;
-        this.recomendaciones = est.recomendaciones;
-        this.edad = est.edad;
-        this.cantidadComida = est.cantidadComida;
-        this.alimentacion =est.alimentacion;
-        o.close();
-        in.close();
-    }
     
 
     public String getId() {
