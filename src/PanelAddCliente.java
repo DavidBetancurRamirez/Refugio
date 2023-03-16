@@ -35,12 +35,6 @@ public class PanelAddCliente extends JPanel {
 		setBounds(0, 0, 1200, 720);
 		setLayout(null);
 		
-//		JPanel panelBorrar = new JPanel();
-//		panelBorrar.setBackground(new Color(0, 0, 255));
-//		panelBorrar.setBounds(0, 0, 1200, 80);
-//		add(panelBorrar);
-//		panelBorrar.setLayout(null);
-		
 		JLabel subtitulo = new JLabel("Formulario Clientes");
 		subtitulo.setFont(new Font("Verdana", Font.BOLD, 22));
 		subtitulo.setHorizontalAlignment(SwingConstants.CENTER);

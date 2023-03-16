@@ -70,8 +70,10 @@ public class Refugio {
 		}
 	}
 	
-	public void addCliente(String cc, String nombre, String telefono, boolean[] respuestas) throws EParamNoValidos {
-		if (!validarString(cc) || !validarString(nombre) || !validarString(telefono) || respuestas.length!=9 || respuestas==null || buscarClienteCc(cc)!=-1) throw new EParamNoValidos();
+	public void addCliente(String cc, String nombre, String telefono, boolean[] respuestas) throws EParamNoValidos, ENoEncontrado {
+		if (!validarString(cc) || !validarString(nombre) || !validarString(telefono) || respuestas.length!=9 || respuestas==null) throw new EParamNoValidos();
+		
+		if (buscarClienteCc(cc)!=-1) throw new ENoEncontrado("El cliente con cedula "+cc+" ya existe");
 		
 		clientes = Arrays.copyOf(clientes, clientes.length+1);
 		clientes[clientes.length-1] = new Cliente(cc, nombre, telefono, respuestas);
@@ -464,11 +466,10 @@ public class Refugio {
 		a.setFechaAdopcion(fechaAdopcion);
 	}
 
-	public void modCliente(Cliente c, String cc, String nombre, String telefono, boolean[] respuestasAdopcion) throws ENoEncontrado, EParamNoValidos {
+	public void modCliente(Cliente c, String cc, String nombre, String telefono, boolean[] respuestasAdopcion) throws EParamNoValidos {
 		if (!validarString(cc) || !validarString(nombre) || !validarString(telefono)) throw new EParamNoValidos();
 		
 		c.setName(nombre);
-		c.setCc(cc);
 		c.setTelefono(telefono);
 		c.setRespuestasAdopcion(respuestasAdopcion);
 		c.setAptoAdoptar(c.clienteAptoAdoptar());
@@ -503,7 +504,7 @@ public class Refugio {
 		animales[i].setAdoptado(false);
 	}
 	
-	public static boolean validarString(String str) {
+	private static boolean validarString(String str) {
 	    return (str == null || str.trim().isEmpty()) ? false : true;
 	}
 
