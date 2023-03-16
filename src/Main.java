@@ -290,7 +290,7 @@ public class Main extends JFrame {
 					JOptionPane.showMessageDialog(panel2, error.getMessage());
 				}
 				catch(IOException error) {
-					JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
+	    			JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
 				} 
 				
 			}
@@ -311,7 +311,7 @@ public class Main extends JFrame {
 					JOptionPane.showMessageDialog(panel6, error.getMessage());
 				}
 				catch(IOException error) {
-					JOptionPane.showMessageDialog(panel6, "Datos incompletos al cargar la informacion, vuelva a intentar");
+	    			JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
 				} 
 			}
 		});
@@ -340,7 +340,7 @@ public class Main extends JFrame {
 					JOptionPane.showMessageDialog(panel3, error.getMessage());
 				}
 				catch(IOException error) {
-					JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
+	    			JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
 				} 
 			}
 		});
@@ -388,8 +388,7 @@ public class Main extends JFrame {
 					JOptionPane.showMessageDialog(panel3, error.getMessage());
 				}
 				catch(IOException error) {
-					//Aca hay una alerta
-					JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
+	    			JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
 				}
 			}
 		});
@@ -415,8 +414,7 @@ public class Main extends JFrame {
 					JOptionPane.showMessageDialog(panel3, error.getMessage());
 				}
 				catch(IOException error) {
-					//Aca hay una alerta
-					JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
+	    			JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
 				}
 			}
 		});
@@ -431,16 +429,12 @@ public class Main extends JFrame {
 			refugio.cargarAdopciones(ruta);
 		}
 		catch(ClassNotFoundException e) {
-			//Aca hay una alerta
 			JOptionPane.showMessageDialog(panel2, "Ha ocurrido un error en el programa \n Vuelva a intentar \n \n "
 					+ "Error: ClassPath missing");
 		}
 		catch(IOException e) {
-			//Aca hay una alerta
 			JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
 		}
-		
-		//Null = blanco , true = rojo, false = verde
 		
 		limpiarPanelPrincipal();
 		pintarAnimalesClientes();

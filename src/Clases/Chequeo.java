@@ -7,7 +7,7 @@ import java.util.Date;
 public class Chequeo implements Serializable {
 	private static final long serialVersionUID = 2L;
 	
-	private String id, recomendacion;
+	private String id;
     private Date fecha;
     private Enfermedad[] enfermedades;
     private String recomendacion;

@@ -353,6 +353,7 @@ public class Refugio {
 		
 	public void cargarAdopciones(File ruta) throws IOException, ClassNotFoundException {
 		File f = new File(ruta+"\\Adopciones\\");
+		if (!f.exists()) f.mkdirs();
 		File[] listaF = f.listFiles(new Filtro(".ado"));
 		adopciones = new Adopcion[listaF.length];
 		Adopcion.cantidad = listaF.length;
@@ -368,6 +369,7 @@ public class Refugio {
 	
 	public void cargarAnimales(File ruta) throws IOException, ClassNotFoundException {
 		File f = new File(ruta+"\\Animales\\");
+		if (!f.exists()) f.mkdirs();
 		File[] listaF = f.listFiles(new Filtro(".ani"));
 		animales = new Animal[listaF.length];
 		Animal.cantidad = listaF.length;
@@ -383,6 +385,7 @@ public class Refugio {
 	
 	public void cargarClientes(File ruta) throws IOException, ClassNotFoundException {
 		File f = new File(ruta+"\\Clientes\\");
+		if (!f.exists()) f.mkdirs();
 		File[] listaF = f.listFiles(new Filtro(".cli"));
 		clientes = new Cliente[listaF.length];
 		
@@ -471,7 +474,7 @@ public class Refugio {
 	}
 	
 	private static boolean validarString(String str) {
-	    return (str == null || str.trim().isEmpty());
+	    return !(str == null || str.trim().isEmpty());
 	}
 	private static boolean validarNumeros(String str) {
 		return str.matches("\\d+");

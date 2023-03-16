@@ -5,12 +5,8 @@ import java.io.Serializable;
 public enum Enfermedad implements Serializable {
 	PARASITOS("Parasitos intestinales"),
 	OTITIS("Otitis"),
-	MOQUILLO("Moquillo"), 
-<<<<<<< HEAD
+	MOQUILLO("Moquillo"),
 	DERMATITIS("Dermatitis"),
-=======
-	DERMATITIS("Dermatitis"), 
->>>>>>> 5667e4b01894bbd4bb71ab6e6d406c9cd9499fee
 	RABIA("Rabia"),
 	INFECCION("Infecciones en el cuerpo"),
 	EXTREMIDAD("Esta mocho"),
