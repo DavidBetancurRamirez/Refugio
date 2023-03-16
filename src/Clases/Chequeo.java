@@ -11,11 +11,17 @@ public class Chequeo implements Serializable {
 	private String id;
     private Date fecha;
     private Enfermedad[] enfermedades;
+    private String recomendacion;
 
-    public Chequeo(Enfermedad[] enfermedades) {
+    public Chequeo(Enfermedad[] enfermedades, String recomendacion) {
 		this.id = "chequeo_"+ cantidad;
 		this.fecha = new Date();
         this.enfermedades = enfermedades;
+        this.recomendacion = recomendacion;
+    }
+    
+    public String getRecomendacion() {
+    	return recomendacion;
     }
 
     public String getId() {

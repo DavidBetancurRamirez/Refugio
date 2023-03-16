@@ -266,37 +266,37 @@ public class Main extends JFrame {
 			}
 		});
 		
-		panel2.lblBtnAdoptar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				try {
-					Adopcion a = refugio.adoptarAnimal(panel2.getCliente(refugio).getCc(), panel2.getAnimal(refugio).getId());
-					panel6.getInfo(panel2.getCliente(refugio), panel2.getAnimal(refugio), refugio, a);
-					refugio.subirAnimales(ruta);
-					refugio.subirAdopciones(ruta);
-					panel6.setVisible(true);
-					panel2.setVisible(false);
-					panel6.setAdding(true);
-					contentPane.add(panel6);
-				}
-				catch(EParamNoValidos error) {
-					JOptionPane.showMessageDialog(panel2, error.getMessage());
-				}
-				catch(ENoEncontrado error) {
-					JOptionPane.showMessageDialog(panel2, error.getMessage());
-				}
-				catch(EAdopcion error) {
-					JOptionPane.showMessageDialog(panel2, error.getMessage());
-				}
-				catch(ArrayIndexOutOfBoundsException error) {
-					JOptionPane.showMessageDialog(panel2, "Datos incorrectos");
-				}
-				catch(IOException error) {
-					JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
-				} 
-				
-			}
-		});
+//		panel2.lblBtnAdoptar.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseClicked(MouseEvent e) {
+//				try {
+//					Adopcion a = refugio.adoptarAnimal(panel2.getCliente(refugio).getCc(), panel2.getAnimal(refugio).getId());
+//					panel6.getInfo(panel2.getCliente(refugio), panel2.getAnimal(refugio), refugio, a);
+//					refugio.subirAnimales(ruta);
+//					refugio.subirAdopciones(ruta);
+//					panel6.setVisible(true);
+//					panel2.setVisible(false);
+//					panel6.setAdding(true);
+//					contentPane.add(panel6);
+//				}
+//				catch(EParamNoValidos error) {
+//					JOptionPane.showMessageDialog(panel2, error.getMessage());
+//				}
+//				catch(ENoEncontrado error) {
+//					JOptionPane.showMessageDialog(panel2, error.getMessage());
+//				}
+//				catch(EAdopcion error) {
+//					JOptionPane.showMessageDialog(panel2, error.getMessage());
+//				}
+//				catch(ArrayIndexOutOfBoundsException error) {
+//					JOptionPane.showMessageDialog(panel2, "Datos incorrectos");
+//				}
+//				catch(IOException error) {
+//					JOptionPane.showMessageDialog(panel2, "Datos incompletos al cargar la informacion, vuelva a intentar");
+//				} 
+//				
+//			}
+//		});
 		
 		panel6.lblBtnVolver.addMouseListener(new MouseAdapter() {
 			@Override

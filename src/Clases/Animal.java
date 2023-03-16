@@ -31,13 +31,13 @@ public abstract class Animal implements Serializable {
         this.cantidadComida = cantidadComida;
         this.alimentacion = alimentacion;
         this.chequeos = new Chequeo[0];
-        addChequeo(enfermedades);
+        addChequeo(enfermedades, recomendaciones);
     }
 
-    public void addChequeo(Enfermedad[] enfermedades){
+    public void addChequeo(Enfermedad[] enfermedades,String recomendaciones){
     	if (enfermedades.length!=0) {
             chequeos= Arrays.copyOf(chequeos,chequeos.length+1);
-    	    chequeos[chequeos.length-1]=new Chequeo(enfermedades);
+    	    chequeos[chequeos.length-1]=new Chequeo(enfermedades, recomendaciones);
     	}
     }
 

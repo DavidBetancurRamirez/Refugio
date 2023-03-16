@@ -606,6 +606,8 @@ public class PanelPrincipal extends JPanel {
 		panelInfoAdopcion.add(lblId_1_1);
 	}
 	
+	
+	
 	public void generateTablaAnimal() {
 		JSeparator separatorV1 = new JSeparator();
 		separatorV1.setPreferredSize(new Dimension(1, 900));

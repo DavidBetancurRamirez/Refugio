@@ -450,7 +450,7 @@ public class Refugio {
 		a.setEdad(edad);
 		a.setCantidadComida(cantidadComida);
 		a.setAlimentacion(alimentacion);
-		if (enfermedades.length!=0) a.addChequeo(enfermedades);
+		if (enfermedades.length!=0) a.addChequeo(enfermedades, recomendaciones);
 	}
 
 	public void modAdopcion(String id, Cliente cliente, Animal animal, Date fechaAdopcion) throws ENoEncontrado, EParamNoValidos {

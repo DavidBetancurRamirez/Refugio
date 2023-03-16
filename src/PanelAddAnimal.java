@@ -294,7 +294,7 @@ public class PanelAddAnimal extends JPanel {
 		id = a.getId();
 		alim = a.getAlimentacion();
 		int indexA = a instanceof Perro ? 0:1;
-		comboBoxTipo.setSelectedIndex(indexA);
+		comboBoxTipo.setSelectedIndex(indexA);	
 		
 		showHistorialMedico(a.getChequeos());
 		
@@ -318,6 +318,8 @@ public class PanelAddAnimal extends JPanel {
 			historial[historial.length-1] = String.valueOf(i.getFecha());
 			historial = Arrays.copyOf(historial, historial.length+1);
 			historial[historial.length-1] = Arrays.toString(i.getEnfermedades());
+			historial = Arrays.copyOf(historial, historial.length+1);
+			historial[historial.length-1] = i.getRecomendacion();
 			historial = Arrays.copyOf(historial, historial.length+1);
 			historial[historial.length-1] = "";
 		}
