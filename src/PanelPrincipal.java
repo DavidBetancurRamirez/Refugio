@@ -46,6 +46,7 @@ public class PanelPrincipal extends JPanel {
 	private JTextField textFieldFiltroAd;
 	JComboBox comboBoxTipoFiltroAd;
 	JLabel lblBtnBuscarAd;
+	JLabel lblCantidadDisp;
 
 	/**
 	 * Create the panel.
@@ -448,6 +449,13 @@ public class PanelPrincipal extends JPanel {
 		lblBtnBuscarAd.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBtnBuscarAd.setBounds(530, 6, 110, 28);
 		panelFiltrosAdopciones.add(lblBtnBuscarAd);
+		
+		lblCantidadDisp = new JLabel("");
+		lblCantidadDisp.setForeground(new Color(0, 255, 0));
+		lblCantidadDisp.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCantidadDisp.setFont(new Font("Verdana", Font.BOLD, 20));
+		lblCantidadDisp.setBounds(560, 82, 76, 30);
+		add(lblCantidadDisp);
 	
 
 	}
@@ -460,6 +468,11 @@ public class PanelPrincipal extends JPanel {
 		int i = r.buscarClienteCc(textFieldIdCliente.getText());
 		if (i==-1) throw new ENoEncontrado("No existe cliente con esta cc");
 		return r.getClientes()[i];
+	}
+	
+	public void setCantDisp(String cant, String total) {
+		String textoAColocar = cant+"/"+total;
+		lblCantidadDisp.setText(textoAColocar);
 	}
 	
 	public void changeColorCirculoA(String c) {
@@ -516,6 +529,13 @@ public class PanelPrincipal extends JPanel {
 	}
 	public String getBusquedaAd2() {
 		return String.valueOf(comboBoxTipoFiltroAd.getSelectedItem());
+	}
+	
+	public void setIdToAdopcionAnimal(String some) {
+		textFieldIdAnimal.setText(some);
+	}
+	public void setIdToAdopcionCliente(String some) {
+		textFieldIdCliente.setText(some);
 	}
 	
 	public void limpiarAdopcion() {
@@ -601,6 +621,8 @@ public class PanelPrincipal extends JPanel {
 		lblId_1_1.setBounds(625, 0, 50, 30);
 		panelInfoAdopcion.add(lblId_1_1);
 	}
+	
+	
 	
 	public void generateTablaAnimal() {
 		JSeparator separatorV1 = new JSeparator();

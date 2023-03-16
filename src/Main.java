@@ -266,6 +266,7 @@ public class Main extends JFrame {
 			}
 		});
 		
+
 		panel2.lblBtnAdoptar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -446,6 +447,7 @@ public class Main extends JFrame {
 		indexColorBuquedaA = 0;
 		indexColorBuquedaB = 0;
 		indexColorBusquedaAd = 0;
+		panel2.setCantDisp(String.valueOf(refugio.getCantidadAnimales()), String.valueOf(refugio.getCapacidad()));
 		
 		panel2.setVisible(true);
 		panelAnterior.setVisible(false);
@@ -519,7 +521,15 @@ public class Main extends JFrame {
 			labelId1.setForeground(new Color(255, 255, 255));
 			labelId1.setFont(new Font("Verdana", Font.PLAIN, 12));
 			labelId1.setBounds(41, coordenada, 99, 30);
+			labelId1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			panel2.panelAnimales.add(labelId1);
+			
+			labelId1.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					panel2.setIdToAdopcionAnimal(i.getId());
+				}
+			});
 			
 			String tipoAnimal = i instanceof Perro ? "Perro" : "Gato";
 			labelTipo1 = new Label(tipoAnimal);
@@ -580,7 +590,15 @@ public class Main extends JFrame {
 			labelId1.setForeground(new Color(255, 255, 255));
 			labelId1.setFont(new Font("Verdana", Font.PLAIN, 12));
 			labelId1.setBounds(41, coordenada, 119, 30);
+			labelId1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			panel2.panelClientes.add(labelId1);
+			
+			labelId1.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					panel2.setIdToAdopcionCliente(i.getCc());
+				}
+			});
 			
 			labelRaza1 = new Label(i.getName());
 			labelRaza1.setForeground(Color.WHITE);
@@ -710,7 +728,15 @@ public class Main extends JFrame {
 			labelId1.setForeground(new Color(255, 255, 255));
 			labelId1.setFont(new Font("Verdana", Font.PLAIN, 12));
 			labelId1.setBounds(41, coordenada, 99, 30);
+			labelId1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			panel2.panelAnimales.add(labelId1);
+			
+			labelId1.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					panel2.setIdToAdopcionAnimal(i.getId());
+				}
+			});
 			
 			String tipoAnimal = i instanceof Perro ? "Perro" : "Gato";
 			labelTipo1 = new Label(tipoAnimal);
@@ -784,7 +810,15 @@ public class Main extends JFrame {
 			labelId1.setForeground(new Color(255, 255, 255));
 			labelId1.setFont(new Font("Verdana", Font.PLAIN, 12));
 			labelId1.setBounds(41, coordenada, 119, 30);
+			labelId1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			panel2.panelClientes.add(labelId1);
+			
+			labelId1.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					panel2.setIdToAdopcionCliente(i.getCc());
+				}
+			});
 			
 			labelRaza1 = new Label(i.getName());
 			labelRaza1.setForeground(Color.WHITE);

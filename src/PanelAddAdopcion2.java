@@ -28,6 +28,7 @@ public class PanelAddAdopcion2 extends JPanel {
 	JLabel lblBtnVolver;
 	JLabel lblBtnCancelar;
 	JLabel subtitulo;
+	JLabel lblFechaAd;
 	private String idAdopcionActual;
 	private boolean modificando = false;
 	private boolean vigencia = false;
@@ -203,6 +204,12 @@ public class PanelAddAdopcion2 extends JPanel {
 		lblBtnCancelar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBtnCancelar.setBounds(500, 580, 200, 50);
 		add(lblBtnCancelar);
+		
+		lblFechaAd = new JLabel("");
+		lblFechaAd.setFont(new Font("Verdana", Font.PLAIN, 18));
+		lblFechaAd.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFechaAd.setBounds(0, 151, 1200, 24);
+		add(lblFechaAd);
 
 	}
 	
@@ -225,6 +232,7 @@ public class PanelAddAdopcion2 extends JPanel {
 		idAdopcionActual = a.getId();
 		subtitulo.setText(String.valueOf(idAdopcionActual));
 		vigencia = a.isVigencia();
+		lblFechaAd.setText(String.valueOf(a.getFechaAdopcion()));
 		
 	}
 	public void setBotonVolver(boolean t) {
@@ -273,6 +281,7 @@ public class PanelAddAdopcion2 extends JPanel {
 //		idAdopcionActual = r.getAdopciones()[r.buscarAdopcionIdAnimal(a.getId())].getId();
 		idAdopcionActual = b.getId();
 		subtitulo.setText(idAdopcionActual);
+		lblFechaAd.setText(String.valueOf(b.getFechaAdopcion()));
 		
 	}
 
