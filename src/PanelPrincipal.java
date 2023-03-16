@@ -215,18 +215,7 @@ public class PanelPrincipal extends JPanel {
 		labelInfoCliente.setForeground(Color.WHITE);
 		labelInfoCliente.setFont(new Font("Verdana", Font.BOLD, 13));
 		labelInfoCliente.setBounds(474, 0, 51, 30);
-		panelClientes.add(labelInfoCliente);
-//		JPanel panellsito = new JPanel();
-//		panellsito.setBackground(new Color(255, 0, 0));
-//		panellsito.setBounds(0, 0, 50, 50);
-//		panelClientes.add(panellsito);
-		
-//		JScrollPane scrollPaneClientes = new JScrollPane(panelClientes);
-//		panelClientes.setLayout(null);
-//		scrollPaneClientes.setBounds(650, 188, 525, 260);
-//		scrollPaneClientes.setLayout(null);
-//		add(scrollPaneClientes);
-		
+		panelClientes.add(labelInfoCliente);		
 		
 		JPanel panelFiltrosAnimales = new JPanel();
 		panelFiltrosAnimales.setBackground(new Color(136, 218, 232));
@@ -343,7 +332,7 @@ public class PanelPrincipal extends JPanel {
 		lblIdAnimal.setBounds(30, 20, 77, 15);
 		panelAdopcion.add(lblIdAnimal);
 		
-		JLabel lblIdCliente = new JLabel("IdCliente");
+		JLabel lblIdCliente = new JLabel("CcCliente");
 		lblIdCliente.setForeground(Color.WHITE);
 		lblIdCliente.setFont(new Font("Verdana", Font.PLAIN, 14));
 		lblIdCliente.setBounds(30, 50, 77, 15);
@@ -436,65 +425,6 @@ public class PanelPrincipal extends JPanel {
 		lblId_1_1.setBounds(625, 0, 50, 30);
 		panelInfoAdopcion.add(lblId_1_1);
 		
-		//ACA
-//		JSeparator separatorA1;
-//		separatorA1 = new JSeparator();
-//		separatorA1.setForeground(new Color(255, 255, 255));
-//		separatorA1.setBounds(0, 31+30, 675, 1);
-//		panelInfoAdopcion.add(separatorA1);
-//		
-//		String circuloRoute = "/Imagenes/circuloVerde.png";
-//		JLabel labelCirculo;
-//		labelCirculo = new JLabel("");
-//		labelCirculo.setIcon(new ImageIcon(PanelPrincipal.class.getResource(circuloRoute)));
-//		labelCirculo.setHorizontalAlignment(SwingConstants.CENTER);
-//		labelCirculo.setBounds(0, 31, 39, 30);
-//		panelInfoAdopcion.add(labelCirculo);
-//		
-//		Label labelTipo1;
-//		Label labelRaza1;
-//		Label labelEdad1;
-//		Label labelInfo1;
-//		
-//		labelTipo1 = new Label("IdAdopcion");
-//		labelTipo1.setAlignment(Label.CENTER);
-//		labelTipo1.setForeground(new Color(255, 255, 255));
-//		labelTipo1.setFont(new Font("Verdana", Font.PLAIN, 12));
-//		labelTipo1.setBounds(41, 31, 194, 30);
-//		panelInfoAdopcion.add(labelTipo1);
-//		
-//		labelRaza1 = new Label("IdAnimal");
-//		labelRaza1.setAlignment(Label.CENTER);
-//		labelRaza1.setForeground(Color.WHITE);
-//		labelRaza1.setFont(new Font("Verdana", Font.PLAIN, 12));
-//		labelRaza1.setBounds(236, 31, 194, 30);
-//		panelInfoAdopcion.add(labelRaza1);
-//		
-//		labelEdad1 = new Label("CCcliente");
-//		labelEdad1.setAlignment(Label.CENTER);
-//		labelEdad1.setForeground(Color.WHITE);
-//		labelEdad1.setFont(new Font("Verdana", Font.PLAIN, 12));
-//		labelEdad1.setBounds(431, 31, 194, 30);
-//		panelInfoAdopcion.add(labelEdad1);
-//		
-//		labelInfo1 = new Label("+");
-//		labelInfo1.setForeground(Color.WHITE);
-//		labelInfo1.setFont(new Font("Verdana", Font.PLAIN, 18));
-//		labelInfo1.setAlignment(Label.CENTER);
-//		labelInfo1.setBounds(626, 31, 49, 30);
-//		labelInfo1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-//		panelInfoAdopcion.add(labelInfo1);
-//		
-////		labelInfo1.addMouseListener(new MouseAdapter() {
-////			@Override
-////			public void mouseClicked(MouseEvent e) {
-////				panel3.setVisible(true);
-////				panel3.modifyAnimal(i);
-////				panel2.setVisible(false);
-////				contentPane.add(panel3);
-////			}
-////		});
-		
 		//Termina
 		
 		JPanel panelFiltrosAdopciones = new JPanel();
@@ -516,7 +446,7 @@ public class PanelPrincipal extends JPanel {
 		panelFiltrosAdopciones.add(textFieldFiltroAd);
 		
 		comboBoxTipoFiltroAd = new JComboBox();
-		comboBoxTipoFiltroAd.setModel(new DefaultComboBoxModel(new String[] {"idAdopcion", "idAnimal", "idCliente"}));
+		comboBoxTipoFiltroAd.setModel(new DefaultComboBoxModel(new String[] {"idAdopcion", "idAnimal", "ccCliente"}));
 		comboBoxTipoFiltroAd.setBounds(405, 6, 100, 28);
 		panelFiltrosAdopciones.add(comboBoxTipoFiltroAd);
 		
