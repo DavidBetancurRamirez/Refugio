@@ -407,7 +407,7 @@ public class Refugio {
 	}
 	
 	public boolean hayEspacio() {
-		return (getCantidadAnimales()<capacidad) ? true : false;
+		return getCantidadAnimales()<capacidad;
 	}
 	
 	public void modAnimal(Animal a, String raza, String recomendaciones, int edad, double cantidadComida, Alimentacion alimentacion, Enfermedad[] enfermedades) throws ENoEncontrado, EParamNoValidos {
@@ -418,7 +418,7 @@ public class Refugio {
 		a.setEdad(edad);
 		a.setCantidadComida(cantidadComida);
 		a.setAlimentacion(alimentacion);
-		if (enfermedades.length!=0) a.addChequeo(enfermedades, recomendaciones);
+		a.addChequeo(enfermedades, recomendaciones);
 	}
 
 	public void modAdopcion(String id, Cliente cliente, Animal animal, Date fechaAdopcion) throws ENoEncontrado, EParamNoValidos {
