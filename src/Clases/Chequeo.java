@@ -6,25 +6,31 @@ import java.util.Date;
 
 public class Chequeo implements Serializable {
 	private static final long serialVersionUID = 2L;
-	public static int cantidad = 0;
 	
-	private String id;
+	private String id, recomendacion;
     private Date fecha;
     private Enfermedad[] enfermedades;
 
-    public Chequeo(Enfermedad[] enfermedades) {
-		this.id = "chequeo_"+ cantidad;
+    public Chequeo(Enfermedad[] enfermedades, String recomendacion, int cantidad) {
+		this.id = "chequeo_"+ cantidad++;
 		this.fecha = new Date();
         this.enfermedades = enfermedades;
+        this.recomendacion = recomendacion;
     }
 
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getRecomendacion() {
+		return recomendacion;
+	}
+	public void setRecomendacion(String recomendacion) {
+		this.recomendacion = recomendacion;
+	}
 
     public Date getFecha() {
         return fecha;

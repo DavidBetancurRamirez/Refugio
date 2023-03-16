@@ -291,9 +291,6 @@ public class Refugio {
 						clientesBusqueda = busquedaC(usarApto, aptoAdoptar, clientes[busqueda[i]], clientesBusqueda);
 					}
 					break;
-	
-				default:
-					break;
 			}
 			
 			if (index!=-1) {
@@ -311,6 +308,7 @@ public class Refugio {
 		 return clientesBusqueda;
 	}
 	private Cliente[] busquedaC(boolean usarApto, boolean aptoAdoptar, Cliente c, Cliente[] clientesBusqueda) {
+		// !usarApto: Si el circulo es blanco en la interfaz
 		if (usarApto) {
 			if (c.isAptoAdoptar()==aptoAdoptar) {
 				clientesBusqueda = Arrays.copyOf(clientesBusqueda, clientesBusqueda.length+1);
@@ -407,7 +405,7 @@ public class Refugio {
 	}
 	
 	public boolean hayEspacio() {
-		return (getCantidadAnimales()<capacidad) ? true : false;
+		return getCantidadAnimales()<capacidad;
 	}
 	
 	public void modAnimal(Animal a, String raza, String recomendaciones, int edad, double cantidadComida, Alimentacion alimentacion, Enfermedad[] enfermedades) throws ENoEncontrado, EParamNoValidos {
@@ -418,7 +416,7 @@ public class Refugio {
 		a.setEdad(edad);
 		a.setCantidadComida(cantidadComida);
 		a.setAlimentacion(alimentacion);
-		if (enfermedades.length!=0) a.addChequeo(enfermedades);
+		a.addChequeo(enfermedades, recomendaciones);
 	}
 
 	public void modAdopcion(String id, Cliente cliente, Animal animal, Date fechaAdopcion) throws ENoEncontrado, EParamNoValidos {
@@ -473,7 +471,7 @@ public class Refugio {
 	}
 	
 	private static boolean validarString(String str) {
-	    return (str == null || str.trim().isEmpty()) ? false : true;
+	    return (str == null || str.trim().isEmpty());
 	}
 	private static boolean validarNumeros(String str) {
 		return str.matches("\\d+");

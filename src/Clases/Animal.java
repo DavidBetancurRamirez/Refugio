@@ -1,10 +1,7 @@
 package Clases;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -31,14 +28,12 @@ public abstract class Animal implements Serializable {
         this.cantidadComida = cantidadComida;
         this.alimentacion = alimentacion;
         this.chequeos = new Chequeo[0];
-        addChequeo(enfermedades);
+        addChequeo(enfermedades, recomendaciones);
     }
 
-    public void addChequeo(Enfermedad[] enfermedades){
-    	if (enfermedades.length!=0) {
-            chequeos= Arrays.copyOf(chequeos,chequeos.length+1);
-    	    chequeos[chequeos.length-1]=new Chequeo(enfermedades);
-    	}
+    public void addChequeo(Enfermedad[] enfermedades, String recomendacion) {
+        chequeos= Arrays.copyOf(chequeos,chequeos.length+1);
+	    chequeos[chequeos.length-1]=new Chequeo(enfermedades, recomendacion, chequeos.length);
     }
 
     public void escribirObjeto(String address) throws IOException {

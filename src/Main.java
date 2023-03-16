@@ -68,7 +68,7 @@ public class Main extends JFrame {
 	
 	
 	
-	Refugio refugio = new Refugio(2);
+	Refugio refugio = new Refugio(30);
 	File ruta = new File("src\\Ficheros");
 	
 	public Main() {
